@@ -96,9 +96,16 @@ while(opcion != "5"):
         else:
             print("alumno a editar : " + alumnos[indiceAlumno].get("nombre"))
             print("NUEVOS VALORES PARA EL ALUMNO : ")
-            nombre = input("NOMBRE : ")
-            email = input("EMAIL : ")
-            celular = input("CELULAR : ")
+
+            nombre = input("NOMBRE ("+ alumnos[indiceAlumno].get("nombre") +") : ")
+            if(nombre == ''):
+                nombre = alumnos[indiceAlumno].get("nombre")
+            email = input("EMAIL ("+ alumnos[indiceAlumno].get("email") +") : ")
+            if(email == ''):
+                email = alumnos[indiceAlumno].get("email")
+            celular = input("CELULAR ("+ alumnos[indiceAlumno].get("celular") +") : ")
+            if(celular == ''):
+                celular = alumnos[indiceAlumno].get("celular")
             dictAlumnoEditar = {
                 'nombre':nombre,
                 'email':email,
@@ -113,6 +120,19 @@ while(opcion != "5"):
         [4]  ELIMINAR ALUMNO
         ========================
         """)
+        valorBusqueda = input("ingrese el email del alumno a eliminar : ")
+        indiceAlumno = -1
+        for indice in range(len(alumnos)):
+            alumno = alumnos[indice]
+            for clave,valor in alumno.items():
+                if(clave == "email" and valor == valorBusqueda):
+                    indiceAlumno = indice
+                    break
+        if(indiceAlumno == -1):
+            print("No se encontro el alumno")
+        else:
+            alumnos.pop(indiceAlumno)
+            print("ALUMNO ELIMINADO !!!")
     elif(opcion == "5"):
         print(
         """
