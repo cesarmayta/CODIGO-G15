@@ -83,6 +83,29 @@ while(opcion != "5"):
         [3]  ACTUALIZAR UN ALUMNO
         ========================
         """)
+        valorBusqueda = input("ingrese el email del alumno a actualizar : ")
+        indiceAlumno = -1
+        for indice in range(len(alumnos)):
+            alumno = alumnos[indice]
+            for clave,valor in alumno.items():
+                if(clave == "email" and valor == valorBusqueda):
+                    indiceAlumno = indice
+                    break
+        if(indiceAlumno == -1):
+            print("No se encontro el alumno")
+        else:
+            print("alumno a editar : " + alumnos[indiceAlumno].get("nombre"))
+            print("NUEVOS VALORES PARA EL ALUMNO : ")
+            nombre = input("NOMBRE : ")
+            email = input("EMAIL : ")
+            celular = input("CELULAR : ")
+            dictAlumnoEditar = {
+                'nombre':nombre,
+                'email':email,
+                'celular':celular
+            }
+            alumnos[indiceAlumno] = dictAlumnoEditar
+            print("ALUMNO ACTUALIZADO!!!")
     elif(opcion == "4"):
         print(
         """
