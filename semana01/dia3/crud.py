@@ -1,6 +1,8 @@
 import os
 import time
 from tabulate import tabulate
+from libCrud import *
+
 """ APLICACIÓN CRUD
 C - CREATE
 R - READ
@@ -18,36 +20,14 @@ alumnos = [
     'celular':'956290589'}
     ]
 
-############# FUNCIONES ###############
-def buscarAlumno(valorBusqueda,listaAlumnos):
-    indiceAlumno = -1
-    for indice in range(len(listaAlumnos)):
-        alumno = listaAlumnos[indice]
-        for clave,valor in alumno.items():
-            if(clave == "email" and valor == valorBusqueda):
-                indiceAlumno = indice
-                break
-    return indiceAlumno
 
-######################################
 
 opcion = "0"
 while(opcion != "5"):
     if(opcion != "0"):
         time.sleep(1)
         os.system("clear")
-    print(
-    """
-    ===============================================================
-                SISTEMA DE MATRICULA DE ALUMNOS
-    ===============================================================
-    [1] REGISTRAR ALUMNO
-    [2] MOSTRAR ALUMNOS
-    [3] ACTUALIZAR ALUMNO
-    [4] ELIMINAR ALUMNO
-    [5] SALIR DEL SISTEMA
-    ===============================================================
-    """)
+    menu()
     opcion = input("INGRESE LA OPCIÓN A EJECUTAR : ")
     os.system("clear")
     if(opcion == "1"):
@@ -57,15 +37,7 @@ while(opcion != "5"):
         [1] REGISTRO DE NUEVO ALUMNO
         ============================
         """)
-        nombre = input("NOMBRE : ")
-        email = input("EMAIL : ")
-        celular = input("CELULAR : ")
-        dictNuevoAlumno = {
-            'nombre':nombre,
-            'email':email,
-            'celular':celular
-        }
-        alumnos.append(dictNuevoAlumno)
+        insertarAlumno(alumnos)
         print(
         """
         ================================
@@ -93,24 +65,7 @@ while(opcion != "5"):
         if(indiceAlumno == -1):
             print("No se encontro el alumno")
         else:
-            print("alumno a editar : " + alumnos[indiceAlumno].get("nombre"))
-            print("NUEVOS VALORES PARA EL ALUMNO : ")
-
-            nombre = input("NOMBRE ("+ alumnos[indiceAlumno].get("nombre") +") : ")
-            if(nombre == ''):
-                nombre = alumnos[indiceAlumno].get("nombre")
-            email = input("EMAIL ("+ alumnos[indiceAlumno].get("email") +") : ")
-            if(email == ''):
-                email = alumnos[indiceAlumno].get("email")
-            celular = input("CELULAR ("+ alumnos[indiceAlumno].get("celular") +") : ")
-            if(celular == ''):
-                celular = alumnos[indiceAlumno].get("celular")
-            dictAlumnoEditar = {
-                'nombre':nombre,
-                'email':email,
-                'celular':celular
-            }
-            alumnos[indiceAlumno] = dictAlumnoEditar
+            actualizarAlumno(indiceAlumno,alumnos)
             print("ALUMNO ACTUALIZADO!!!")
     elif(opcion == "4"):
         print(
