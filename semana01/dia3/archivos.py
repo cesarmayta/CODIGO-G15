@@ -1,0 +1,18 @@
+f = open('alumnos.txt','w')
+f.write('\ncesar mayta,cesarmayta@gmail.com,990909090')
+
+print("archivo creado con exito!!!")
+f.write('\nana lopez,ana@gmail.com,9092332')
+f.write('\njorge perez,jorge@gmail.com,90809890')
+f.close()
+fr = open('alumnos.txt','r')
+dataAlumnos = fr.read()
+print(dataAlumnos)
+fr.close()
+
+fa = open('alumnos.txt','a')
+nombre = input("nombre : ")
+email = input("email : ")
+celular = input("celular : ")
+fa.write("\n" + nombre + "," + email + "," + celular )
+print("se registro el nuevo alumno")

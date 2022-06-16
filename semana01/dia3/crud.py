@@ -4,11 +4,12 @@ from tabulate import tabulate
 from libCrud import *
 
 def crudAlumnos():
-    alumnos = [
-        {'nombre':'cesar mayta',
-        'email':'cesarmayta@gmail.com',
-        'celular':'956290589'}
-        ]
+    
+    if(os.path.isfile('alumnos.csv')):
+        f = open('alumnos.csv','r')
+        strAlumnos = f.read()
+        alumnos = cargarAlumnos(strAlumnos)
+        f.close()
 
     opcion = "0"
     while(opcion != "5"):
