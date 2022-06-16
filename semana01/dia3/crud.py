@@ -10,6 +10,8 @@ def crudAlumnos():
         strAlumnos = f.read()
         alumnos = cargarAlumnos(strAlumnos)
         f.close()
+    else:
+        alumnos = []
 
     opcion = "0"
     while(opcion != "5"):
