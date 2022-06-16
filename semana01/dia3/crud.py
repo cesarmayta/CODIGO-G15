@@ -79,6 +79,10 @@ def crudAlumnos():
             EL SISTEMA SE ESTA CERRANDO
             ===========================
             """)
+            strAlumnos = grabarAlumnos(alumnos)
+            fw = open('alumnos.csv','w')
+            fw.write(strAlumnos)
+            fw.close()
         else:
             print(
             """
