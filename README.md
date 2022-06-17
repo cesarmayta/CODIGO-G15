@@ -7,6 +7,11 @@
 Hola! 👋🏻 las ramas están organizadas por semana, es decir **CADA RAMA SERA UNA SEMANA**
 
 SEMANA 01 : PYTHON  -https://github.com/cesarmayta/CODIGO-G15/tree/semana01</br>
+dia1 : variables,condicionales y bucles
+dia2 : listas,tuplas y diccionarios
+dia3 : funciones,librerias y manejo de archivos
+dia4 : poo
+dia5 : ejercicios
 SEMANA 02 : FLASK - https://github.com/cesarmayta/CODIGO-G15/tree/semana02</br>
 SEMANA 03 : BASE DE DATOS RELACIONALES : https://github.com/cesarmayta/CODIGO-G15/tree/semana03</br>
 SEMANA 04 : DJANGO - https://github.com/cesarmayta/CODIGO-G15/tree/semana04</br>
