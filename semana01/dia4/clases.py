@@ -28,3 +28,4 @@ print(" color : " + vw.color)
 print(" placa : " + vw.placa)
 print(" maraca : " + vw.marca)
 
+vw.encender()
