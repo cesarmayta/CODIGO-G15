@@ -26,7 +26,7 @@ class Alumno:
         self.email.grid(row=2,column=1)
 
         #BOTON
-        btnNuevoAlumno = Button(frame,text='Insertar')
+        btnNuevoAlumno = Button(frame,text='Insertar',command=self.registrarAlumno)
         btnNuevoAlumno.grid(row=4,columnspan=2,sticky=W+E)
 
         #TREVIEW
@@ -34,6 +34,9 @@ class Alumno:
         self.TrvAlumnos.grid(row=5,column=0,columnspan=2,padx=10)
         self.TrvAlumnos.heading('#0',text='Nombre',anchor=CENTER)
         self.TrvAlumnos.heading('#1',text='Email',anchor=CENTER)
+
+    def registrarAlumno(self):
+        self.TrvAlumnos.insert('',0,text=self.nombre.get(),values=[self.email.get()])
 
 window = Tk()
 app = Alumno(window)
