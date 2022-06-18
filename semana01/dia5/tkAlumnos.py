@@ -36,7 +36,7 @@ class Alumno:
         self.TrvAlumnos.heading('#1',text='Email',anchor=CENTER)
 
     def registrarAlumno(self):
-        self.TrvAlumnos.insert('',0,text=self.nombre.get(),values=[self.email.get()])
+        self.TrvAlumnos.insert('',END,text=self.nombre.get(),values=[self.email.get()])
 
 window = Tk()
 app = Alumno(window)
