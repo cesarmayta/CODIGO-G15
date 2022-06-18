@@ -4,6 +4,19 @@ from tabulate import tabulate
 
 url = requests.get("https://www.sbs.gob.pe/app/pp/SISTIP_PORTAL/Paginas/Publicacion/TipoCambioPromedio.aspx")
 
+def grabarMonedas(monedas):
+    """
+    convierte una lista de diccionarios en una cada string
+    """
+    strMonedas = ""
+    for l in monedas:
+        for clave,valor in l.items():
+            strMonedas += valor
+            if clave != 'venta':
+                strMonedas += ';'
+            else:
+                strMonedas += '\n'
+    return strMonedas
 
 def scrapping_tipocambio():
     if(url.status_code == 200):
@@ -41,6 +54,10 @@ def scrapping_tipocambio():
         columnas = ["moneda","compra","venta"]
         tablaMonedas = [moneda.values() for moneda in listaMonedas]
         print(tabulate(tablaMonedas,headers=columnas,tablefmt="grid"))
+        strMonedas = grabarMonedas(listaMonedas)
+        fw = open('monedas.csv','w')
+        fw.write(strMonedas)
+        fw.close()
     else:
         print("error " + str(url.status_code))
 
