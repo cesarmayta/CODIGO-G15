@@ -16,11 +16,45 @@ Hola! 👋🏻 las ramas están organizadas por semana, es decir **CADA RAMA SER
         <li>dia5 : ejercicios</li>
       </ul>
   </li>
+  <li>SEMANA 02 : FLASK - https://github.com/cesarmayta/CODIGO-G15/tree/semana02
+      <ul>
+        <li>dia1 : introducción a flask,request y reponse</li>
+        <li>dia2: templates con jinja2</li>
+        <li>dia3 : flask y firebase</li>
+        <li>dia4 : appfactory</li>
+        <li>dia5 : wtf y login de usuarios</li>
+        <li>dia6 : deploy en heroku</li>
+      </ul>
+  </li>
+  <li>SEMANA 03 : BASE DE DATOS RELACIONALES : https://github.com/cesarmayta/CODIGO-G15/tree/semana03
+      <ul>
+        <li>dia1 : fundamentos de bd y mysql</li>
+        <li>dia2 : relaciones, subconsultas y agrupaciones</li>
+        <li>dia3 : modelado y normalización</li>
+        <li>dia4 : vistas, procedimientos almacenados y triggers</li>
+        <li>dia5 : conexión con python</li>
+      </ul>
+  </li>
+  <li>SEMANA 04 : DJANGO - https://github.com/cesarmayta/CODIGO-G15/tree/semana04
+      <ul>
+        <li>dia1 : introducción y manejo de templates</li>
+        <li>dia2 : patron MTV</li>
+        <li>dia3 : templates,estaticos y django admin</li>
+        <li>dia4 : Ecommerce - carrito de compras</li>
+        <li>dia5 : Ecommerce - login y manejo de usuarios</li>
+        <li>dia6 : Ecommerce - registro de pedidos</li>
+      </ul>
+  </li>
+  <li>SEMANA 05 : APIREST - https://github.com/cesarmayta/CODIGO-G15/tree/semana05
+      <ul>
+        <li>dia1 : introducción a servicios restfull con djangorestframework</li>
+        <li>dia2 : vistas basadas en clases</li>
+        <li>dia3 : sistema POS - catalogos</li>
+        <li>dia4 : sistemas POS - Pedidos</li>
+        <li>dia5 : despliegue de backend y front end</li>
+      </ul>
+  </li>
 </ul>
-SEMANA 02 : FLASK - https://github.com/cesarmayta/CODIGO-G15/tree/semana02</br>
-SEMANA 03 : BASE DE DATOS RELACIONALES : https://github.com/cesarmayta/CODIGO-G15/tree/semana03</br>
-SEMANA 04 : DJANGO - https://github.com/cesarmayta/CODIGO-G15/tree/semana04</br>
-SEMANA 05 : APIREST - https://github.com/cesarmayta/CODIGO-G15/tree/semana05</br>
 SEMANA 06 : AUTENTICACIÓN API MONGODB -https://github.com/cesarmayta/CODIGO-G15/tree/semana06</br>
 SEMANA 07 : CLOUD: https://github.com/cesarmayta/CODIGO-G15/tree/semana07</br>
 SEMANA 08 : NODEJS :https://github.com/cesarmayta/CODIGO-G15/tree/semana08</br>
