@@ -1,11 +1,14 @@
 from flask import Flask,request,render_template
+from OfertasLaborales import OfertasLaborales
+
 
 app = Flask(__name__)
 
 @app.route('/')
 def index():
+    habilidad = request.args.get('habilidad','python')
     listaMenu = ['Python','React','NodeJs']
-    listaOfertas = [
+    """listaOfertas = [
         {
             "titulo":"backend developer con python y flask",
             "empresa":"banco de credito",
@@ -21,10 +24,12 @@ def index():
             "empresa":"Linio",
             "url":"https://www.linio.com.pe"
         }
-    ]
+    ]"""
+    ofertas = OfertasLaborales()
+    listaOfertas = ofertas.obtenerOfertas(habilidad)
 
     context = {
-        "menu":listaMenu,
+        "menus":listaMenu,
         "ofertas":listaOfertas
     }
     return render_template('index.html',**context)

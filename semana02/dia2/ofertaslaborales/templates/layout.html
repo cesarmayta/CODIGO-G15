@@ -13,7 +13,9 @@
   <body>
     <nav class="navbar navbar-dark bg-dark">
         <div class="container">
-          <a class="navbar-brand" href="#">Navbar</a>
+          {% for menu in menus %}
+            <a class="navbar-brand" href="/?habilidad={{menu}}">{{menu}}</a>
+          {% endfor %}
         </div>
     </nav>
     <div class="container">
