@@ -28,4 +28,14 @@ def acercade():
 def contacto():
     return render_template('contacto.html')
 
+@app.route('/repositorios')
+def repositorios():
+    perfil = GitHubProfile()
+    listaRepositorios = perfil.obtenerRepositorios(10)
+    context = {
+        'repositorios':listaRepositorios
+    }
+    print(listaRepositorios)
+    return render_template('repositorios.html',**context)
+
 app.run(debug=True)
