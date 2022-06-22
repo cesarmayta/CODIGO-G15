@@ -8,12 +8,10 @@ class OfertasLaborales:
 
     def obtenerOfertas(self,habilidad):
         urlOfertas = self.url_principal + "trabajo-de-" + habilidad + "-sin-experiencia"
-        print(urlOfertas)
         url = requests.get(urlOfertas)
         resultado = []
         if(url.status_code == 200):
             html = BeautifulSoup(url.text,'html.parser')
-            print(html)
             ofertas = html.find_all('article',{'class':'box_offer'})
             listaOfertas = []
             for oferta in ofertas:
@@ -26,7 +24,6 @@ class OfertasLaborales:
                     'empresa':empresa.get_text(),
                     'url':enlace
                 }
-                print(dicOferta)
                 listaOfertas.append(dicOferta)
                 
             resultado = listaOfertas
