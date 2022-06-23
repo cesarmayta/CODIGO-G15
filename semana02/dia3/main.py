@@ -1,15 +1,19 @@
-from flask import Flask,render_template,request
+from flask import Flask,render_template,request,session
 from FirebaseAdmin import FirebaseAdmin
 
 fb = FirebaseAdmin()
 
 app = Flask(__name__)
 
+#creamos una clave secreta para las variables de sesión
+app.secret_key = 'qwerty123456'
+
 @app.route('/')
 def index():
     dicBiografia = fb.getCollection('biografia')[0]
-    print(dicBiografia)
-    return render_template('index.html',**dicBiografia)
+    session['biografia'] = dicBiografia
+
+    return render_template('index.html')
 
 @app.route('/portafolio')
 def portafolio():
