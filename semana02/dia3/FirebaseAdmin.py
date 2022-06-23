@@ -1,8 +1,13 @@
+import firebase_admin
+from firebase_admin import credentials
+from firebase_admin import firestore
 
 class FirebaseAdmin:
 
-    def __init__(self,db):
-        self.db = db
+    def __init__(self):
+        cred = credentials.Certificate("token.json")
+        firebase_admin.initialize_app(cred)
+        self.db = firestore.client()
 
     def getCollection(self,collectionName):
         lstCollection = []
