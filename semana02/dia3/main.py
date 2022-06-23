@@ -11,4 +11,14 @@ def index():
     print(dicBiografia)
     return render_template('index.html',**dicBiografia)
 
+@app.route('/portafolio')
+def portafolio():
+    listaProyectos = fb.getCollection('proyectos')
+    
+    context = {
+        'proyectos':listaProyectos
+    }
+
+    return render_template('portafolio.html',**context)
+
 app.run(debug=True)
