@@ -1,4 +1,4 @@
-from flask import render_template,redirect,url_for,session
+from flask import render_template,redirect,url_for,session,flash
 
 from . import admin
 from .forms import LoginForm
@@ -34,6 +34,12 @@ def login():
             return redirect(url_for('admin.index'))
         except:
             print("error al autenticarse")
+            flash("Usuario o password invalidos")
 
 
     return render_template('admin/login.html',**context)
+
+@admin.route('/logout')
+def logout():
+    session.pop('token')
+    return redirect(url_for('admin.login'))
