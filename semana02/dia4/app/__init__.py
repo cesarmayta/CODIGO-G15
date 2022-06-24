@@ -6,6 +6,7 @@ fb = FirebaseAdmin()
 
 ##blueprints
 from .portafolio import portafolio
+from .admin import admin
 
 
 ##archivo de configuración
@@ -17,5 +18,6 @@ def create_app():
     app.config.from_object(Config)
 
     app.register_blueprint(portafolio)
+    app.register_blueprint(admin)
 
     return app
