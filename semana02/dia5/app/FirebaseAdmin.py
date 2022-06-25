@@ -18,3 +18,7 @@ class FirebaseAdmin:
             lstCollection.append(dicCollection)
         
         return lstCollection
+
+    def getDocument(self,collectionName,documentId):
+        docValue = self.db.collection(collectionName).document(documentId).get()
+        return docValue.to_dict()

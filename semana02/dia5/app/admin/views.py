@@ -1,13 +1,15 @@
 from flask import render_template,redirect,url_for,session,flash
 
 from . import admin
-from .forms import LoginForm
+from .forms import LoginForm,BiografiaForm
 
 import pyrebase
 from app.firebaseConfig import firebaseConfig
 
 firebase = pyrebase.initialize_app(firebaseConfig)
 auth = firebase.auth()
+
+from app import fb
 
 @admin.route('/')
 def index():
@@ -16,6 +18,7 @@ def index():
     else:
         return redirect(url_for('admin.login'))
 
+################### LOGIN ############################
 @admin.route('/login',methods=['GET','POST'])
 def login():
     login_form = LoginForm()
@@ -43,3 +46,18 @@ def login():
 def logout():
     session.pop('token')
     return redirect(url_for('admin.login'))
+
+################### PANEL DE ADMINISTRACIÓN ############################
+@admin.route('/biografia',methods=['GET','POST'])
+def biografia():
+    if ('token' in session):
+        biografiaData = fb.getDocument('biografia','IMlbsNfnTxWxtOjlD2dk')
+        print(biografiaData)
+
+        biografia_form = BiografiaForm(data=biografiaData)
+        context = {
+            'biografia_form':biografia_form
+        }
+        return render_template('admin/biografia.html',**context)
+    else:
+        return redirect(url_for('admin.login'))
