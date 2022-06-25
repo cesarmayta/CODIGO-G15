@@ -17,3 +17,4 @@ class BiografiaForm(FlaskForm):
     github = StringField('Url GitHub',validators=[DataRequired()])
     linkedin = StringField('Url linkedIn',validators=[DataRequired()])
     twitter = StringField('Url Twitter',validators=[DataRequired()])
+    submit = SubmitField('Actualizar Datos')

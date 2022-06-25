@@ -53,8 +53,24 @@ def biografia():
     if ('token' in session):
         biografiaData = fb.getDocument('biografia','IMlbsNfnTxWxtOjlD2dk')
         print(biografiaData)
-
         biografia_form = BiografiaForm(data=biografiaData)
+
+        if biografia_form.validate_on_submit():
+            
+            dataBiografiaActualizada = {
+                'nombre' : biografia_form.nombre.data,
+                'resumen' : biografia_form.resumen.data,
+                'rol' : biografia_form.rol.data,
+                'foto' : biografia_form.foto.data,
+                'ubicacion' : biografia_form.ubicacion.data,
+                'cv' : biografia_form.cv.data,
+                'github' : biografia_form.github.data,
+                'linkedin' : biografia_form.linkedin.data,
+                'twitter' : biografia_form.twitter.data
+            }
+            resultadoUpdateBiografia = fb.updateDocument('biografia','IMlbsNfnTxWxtOjlD2dk',dataBiografiaActualizada)
+            flash("Datos Actualizados")
+            #biografia_form = BiografiaForm(data=dataBiografiaActualizada)
         context = {
             'biografia_form':biografia_form
         }

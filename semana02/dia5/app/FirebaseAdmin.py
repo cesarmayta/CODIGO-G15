@@ -22,3 +22,7 @@ class FirebaseAdmin:
     def getDocument(self,collectionName,documentId):
         docValue = self.db.collection(collectionName).document(documentId).get()
         return docValue.to_dict()
+
+    def updateDocument(self,collectionName,documentId,data):
+        docValue = self.db.collection(collectionName).document(documentId).set(data)
+        return docValue
