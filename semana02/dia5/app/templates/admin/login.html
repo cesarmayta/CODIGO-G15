@@ -1,4 +1,4 @@
-{% extends 'admin/layout.html' %}
+{% extends 'admin/layoutLogin.html' %}
 {% from 'bootstrap4/form.html' import render_form %}
 {% block content %}
 <div id="layoutAuthentication">
@@ -15,9 +15,6 @@
                             <div class="card-footer text-center py-3">
                                 {%for message in get_flashed_messages() %}
                                     <div class ="alert alert-danger">
-                                        <button type="button"
-                                            data-dismiss="alert"
-                                            class="close">&times;</button>
                                         {{message}}
                                     </div>
                                 {% endfor %}

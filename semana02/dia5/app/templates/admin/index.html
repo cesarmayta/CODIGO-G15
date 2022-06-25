@@ -1,5 +1,6 @@
-{% extends 'admin/layout.html' %}
+{% extends 'admin/layoutAdmin.html' %}
 {% block content %}
-BIENVENIDO A MI PANEL
-<a href="{{ url_for('admin.logout') }}">CERRAR SESIÓN</a>
+<div class="container-fluid px-4">
+    <h1 class="mt-4">PANEL DE ADMINISTRACIÓN</h1>
+</div>
 {% endblock %}
