@@ -33,3 +33,8 @@ class FirebaseAdmin:
     def insertDocument(self,collectionName,data):
         docValue = self.db.collection(collectionName).document().set(data)
         return docValue
+
+    def deleteDocument(self,collectionName,documentId):
+        self.db.collection(collectionName).document(documentId).delete()
+        return True
+        

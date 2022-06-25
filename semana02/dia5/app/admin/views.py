@@ -140,3 +140,8 @@ def proyecto(id=''):
     else:
         return redirect(url_for('admin.login'))
 
+@admin.route('/delproyecto/<id>')
+def delProyecto(id=''):
+    fb.deleteDocument('proyectos',id)
+    return redirect(url_for('admin.proyectos'))
+
