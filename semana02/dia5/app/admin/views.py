@@ -1,7 +1,7 @@
 from flask import render_template,redirect,url_for,session,flash
 
 from . import admin
-from .forms import LoginForm,BiografiaForm
+from .forms import LoginForm,BiografiaForm,ProyectoForm
 
 import pyrebase
 from app.firebaseConfig import firebaseConfig
@@ -77,3 +77,36 @@ def biografia():
         return render_template('admin/biografia.html',**context)
     else:
         return redirect(url_for('admin.login'))
+
+
+@admin.route('/proyectos',methods=['GET','POST'])
+def proyectos():
+    if('token' in session):
+        listaProyectos = fb.getCollection('proyectos')
+
+        #formulario de proyectos
+        proyecto_form = ProyectoForm()
+
+        if proyecto_form.validate_on_submit():
+            
+            dataNuevoProyecto = {
+                'codigo' : proyecto_form.codigo.data,
+                'nombre' : proyecto_form.nombre.data,
+                'descripcion' : proyecto_form.descripcion.data,
+                'imagen': proyecto_form.imagen.data,
+                'url':proyecto_form.url.data
+            }
+
+            nuevoProyecto = fb.insertDocument('proyectos',dataNuevoProyecto)
+            print(nuevoProyecto)
+
+            return redirect(url_for('admin.proyectos'))
+
+        context = {
+            'proyectos':listaProyectos,
+            'proyecto_form':proyecto_form
+        }
+        return render_template('admin/proyectos.html',**context)
+    else:
+        return redirect(url_for('admin.login'))
+

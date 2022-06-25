@@ -26,3 +26,7 @@ class FirebaseAdmin:
     def updateDocument(self,collectionName,documentId,data):
         docValue = self.db.collection(collectionName).document(documentId).set(data)
         return docValue
+
+    def insertDocument(self,collectionName,data):
+        docValue = self.db.collection(collectionName).document().set(data)
+        return docValue
