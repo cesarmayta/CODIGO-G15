@@ -110,3 +110,33 @@ def proyectos():
     else:
         return redirect(url_for('admin.login'))
 
+@admin.route('/proyecto/<id>',methods=['GET','POST'])
+def proyecto(id=''):
+    if('token' in session):
+        listaProyectos = fb.getCollection('proyectos')
+        proyectoData = fb.getDocument('proyectos',id)
+        print(proyectoData)
+        proyecto_form = ProyectoForm(data=proyectoData)
+
+        if proyecto_form.validate_on_submit():
+            
+            dataProyectoActualizar = {
+                'codigo' : proyecto_form.codigo.data,
+                'nombre' : proyecto_form.nombre.data,
+                'descripcion' : proyecto_form.descripcion.data,
+                'imagen': proyecto_form.imagen.data,
+                'url':proyecto_form.url.data
+            }
+
+            resultadoActualizarProyecto = fb.updateDocument('proyectos',id,dataProyectoActualizar)
+
+            return redirect(url_for('admin.proyectos'))
+
+        context = {
+            'proyectos':listaProyectos,
+            'proyecto_form':proyecto_form
+        }
+        return render_template('admin/proyectos.html',**context)
+    else:
+        return redirect(url_for('admin.login'))
+

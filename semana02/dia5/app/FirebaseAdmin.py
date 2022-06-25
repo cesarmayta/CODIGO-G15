@@ -15,7 +15,10 @@ class FirebaseAdmin:
         docValues = collectionValues.get()
         for doc in docValues:
             dicCollection = doc.to_dict()
+            #print(doc.id)
+            dicCollection.update({'id':doc.id})
             lstCollection.append(dicCollection)
+            #print(dicCollection)
         
         return lstCollection
 
