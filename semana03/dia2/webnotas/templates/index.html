@@ -12,6 +12,32 @@
   </head>
   <body>
     <h1>Notas</h1>
+    <table class="table">
+      <thead class="table-dark">
+          <th>ALUMNO</th>
+          <th>HTML Y CSS</th>
+          <th>JAVASCRIPT</th>
+          <th>REACT</th>
+          <th>PYTHON</th>
+          <th>FLASK</th>
+          <th>MYSQL</th>
+          <th>PROMEDIO</th>
+      </thead>
+      <tbody>
+        {%for nota in notas %}
+        <tr>
+          <td>{{ nota.0 }}</td>
+          <td>{{ nota.1 }}</td>
+          <td>{{ nota.2 }}</td>
+          <td>{{ nota.3 }}</td>
+          <td>{{ nota.4 }}</td>
+          <td>{{ nota.5 }}</td>
+          <td>{{ nota.6 }}</td>
+          <td>{{ nota.7 }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
 
     <!-- Optional JavaScript; choose one of the two! -->
 
