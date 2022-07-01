@@ -8,7 +8,7 @@ BEGIN
     DECLARE cursoId INT;
     DECLARE totalCursos INT;
     set matriculaId = 0;
-    set CursoId = 1;
+    set cursoId = 1;
     set totalCursos = 0;
 
     --insertamos datos
