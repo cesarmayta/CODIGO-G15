@@ -1,8 +1,10 @@
 from flask import Flask,jsonify,request
 from flask_mysqldb import MySQL
+from flask_cors import CORS
 import os
 
 app = Flask(__name__)
+CORS(app)
 
 #VALORES DE CONEXIÓN A MYSQL
 app.config['MYSQL_HOST'] = os.environ.get("MYSQL_ADDON_HOST")
@@ -98,8 +100,7 @@ def deleteAlumno(id):
 
     try:
         cursor = mysql.connection.cursor()
-        sqlDeleteAlumno = """delete from tbl_alumno
-                            where alumno_id = """+ id
+        sqlDeleteAlumno = "delete from tbl_alumno where alumno_id = "+ id 
 
         cursor.execute(sqlDeleteAlumno)
 
