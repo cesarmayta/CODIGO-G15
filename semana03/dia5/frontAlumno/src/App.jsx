@@ -13,6 +13,9 @@ class App extends Component{
     axios.get('http://localhost:5000/alumno')
     .then(res=>{
       console.log(res.data.content);
+      this.setState({
+        alumnos: res.data.content
+      })
     })
   }
 
@@ -20,6 +23,21 @@ class App extends Component{
     return(
       <div>
         <h1>Relación de Alumnos</h1>
+        <table border="1">
+          <tr>
+            <th>nombre</th>
+            <th>email</th>
+          </tr>
+        
+        {this.state.alumnos.map((alu)=>{
+          return(
+            <tr key={alu.id}>
+              <td>{alu.nombre}</td>
+              <td>{alu.email}</td>
+            </tr>
+          )
+        })}
+        </table>
       </div>
     )
   }

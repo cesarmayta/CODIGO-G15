@@ -11,6 +11,7 @@ app.config['MYSQL_HOST'] = os.environ.get("MYSQL_ADDON_HOST")
 app.config['MYSQL_USER'] = os.environ.get("MYSQL_ADDON_USER")
 app.config['MYSQL_PASSWORD'] = os.environ.get("MYSQL_ADDON_PASSWORD")
 app.config['MYSQL_DB'] = os.environ.get("MYSQL_ADDON_DB")
+app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 
 mysql = MySQL(app)
 
@@ -25,8 +26,9 @@ def index():
 @app.route('/alumno')
 def getAlumno():
     cursor = mysql.connection.cursor()
-    cursor.execute('select * from tbl_alumno')
+    cursor.execute('select alumno_id as id,alumno_nombre as nombre,alumno_email as email from tbl_alumno')
     data = cursor.fetchall()
+    print(data)
     cursor.close()
     context = {
         'status':True,
