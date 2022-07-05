@@ -8,3 +8,16 @@ def mostrar_encuesta(request):
 
 def pregunta(request,pregunta_id):
     return HttpResponse('pregunta nro %s' % pregunta_id)
+
+def enviar_resultado(request):
+    nombre = request.POST['nombre']
+    rol = request.POST['rol']
+    idiomas = request.POST.getlist('idiomas')
+
+    context = {
+        'nombre':nombre,
+        'rol':rol,
+        'idiomas':idiomas
+    }
+
+    return render(request,'respuesta.html',context)
