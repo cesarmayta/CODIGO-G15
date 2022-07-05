@@ -1,0 +1,5 @@
+1 - creamos el proyectos
+django-admin startproject encuestas
+2 - ingresamos a la carpeta encuestas y desplegamos el proyecto
+cd encuestas
+python manage.py runserver
