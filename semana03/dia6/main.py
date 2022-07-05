@@ -45,7 +45,7 @@ def index():
     })
 
 @app.route('/alumno',methods=['POST'])
-def alumno():
+def setAlumno():
     nombre = request.json['nombre']
     email = request.json['email']
 
@@ -56,6 +56,13 @@ def alumno():
 
     #seralizamos los datos para retornamos en JSON
     return alumno_schema.jsonify(nuevoAlumno)
+### METODO GET PARA CONSULTAR VARIOS ALUMNOS
+lista_alumnos_schema = AlumnoSchema(many=True)
+@app.route('/alumno')
+def getAlumno():
+    listaAlumnos = Alumno.query.all() #select * from alumno
+    return jsonify(lista_alumnos_schema.dump(listaAlumnos))
+
 
 if __name__ == "__main__":
     app.run(debug=True,port=5000)
