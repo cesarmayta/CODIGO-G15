@@ -29,7 +29,13 @@ class Alumno(db.Model):
 db.create_all()
 print("se crearon las tablas en la base de datos")
 
+############ CREAMOS LOS ESQUEMAS
+ma = Marshmallow(app)
+class AlumnoSchema(ma.Schema):
+    class Meta:
+        fields = ('id','nombre','email')
 
+alumno_schema = AlumnoSchema()
 
 @app.route('/')
 def index():
@@ -37,6 +43,19 @@ def index():
         'status':True,
         'content':'Bienvenido a mi apirest con flask y sqlalchemy'
     })
+
+@app.route('/alumno',methods=['POST'])
+def alumno():
+    nombre = request.json['nombre']
+    email = request.json['email']
+
+    #insertamos el registro en base de datos usando el ORM
+    nuevoAlumno = Alumno(nombre,email)
+    db.session.add(nuevoAlumno)
+    db.session.commit()
+
+    #seralizamos los datos para retornamos en JSON
+    return alumno_schema.jsonify(nuevoAlumno)
 
 if __name__ == "__main__":
     app.run(debug=True,port=5000)
