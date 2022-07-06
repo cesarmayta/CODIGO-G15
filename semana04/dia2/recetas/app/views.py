@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 
 
 from .models import Receta
-from .forms import RecetaForm
+from .forms import RecetaForm,AutorForm
 
 # Create your views here.
 def index(request):
@@ -10,8 +10,11 @@ def index(request):
     print(listaRecetas)
 
     frmReceta = RecetaForm()
+    frmAutor = AutorForm()
+
 
     context = {
+        'frmAutor':frmAutor,
         'frmReceta':frmReceta,
         'recetas':listaRecetas
     }
@@ -30,6 +33,13 @@ def registrarReceta(request):
         nuevaReceta.preparacion = dataReceta['preparacion']
         nuevaReceta.autor = dataReceta['autor']
         nuevaReceta.save()
+
+    return redirect('/')
+
+def registrarAutor(request):
+    frmAutor = AutorForm(request.POST)
+    if frmAutor.is_valid():
+        frmAutor.save()
 
     return redirect('/')
 
