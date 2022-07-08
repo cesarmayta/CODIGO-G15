@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 from .models import Categoria,Marca,Producto
 
-# Create your views here.
+################### CATALOGO DE PRODUCTOS
 def index(request):
     listaCategorias = Categoria.objects.all()
     listaMarcas = Marca.objects.all()
@@ -14,8 +14,28 @@ def index(request):
     }
     return render(request,'index.html',context)
 
-def producto(request):
-    return render(request,'producto.html')
+def producto(request,producto_id):
+    objProducto = Producto.objects.get(pk=producto_id)
+    context = {
+        'producto':objProducto
+    }
+    return render(request,'producto.html',context)
+
+def productosPorCategoria(request,categoria_id):
+    objCategoria = Categoria.objects.get(pk=categoria_id)
+    listaProductos = objCategoria.producto_set.all()
+
+    listaCategorias = Categoria.objects.all()
+    listaMarcas = Marca.objects.all()
+    context = {
+        'marcas':listaMarcas,
+        'categorias':listaCategorias,
+        'productos':listaProductos
+    }
+
+    return render(request,'index.html',context)
+
+############################ CARRITO DE COMPRAS ############
 
 def carrito(request):
     return render(request,'carrito.html')
