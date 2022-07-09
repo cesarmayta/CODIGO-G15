@@ -83,10 +83,17 @@ def agregarCarrito(request,producto_id):
         cantidad = int(request.POST['cantidad'])
     else:
         cantidad  = 1
+    
     objProducto = Producto.objects.get(pk=producto_id)
     carritoProducto = Cart(request)
     carritoProducto.add(objProducto,cantidad)
-    print(request.session.get("cart"))
+    #print(request.session.get("cart"))
+
+    #print(request.path_info)
+
+    if request.method == 'GET':
+        return redirect("/")
+
 
     return render(request,'carrito.html')
 
