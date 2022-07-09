@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 
-from .models import Categoria,Marca,Producto
+from .models import Categoria,Marca,Producto,Cliente
 
 from .carrito import Cart
 
@@ -140,10 +140,71 @@ def logoutUsuario(request):
     return render(request,'login.html')
 
 def cuentaUsuario(request):
-    frmCliente = ClienteForm()
+    
+    try:
+        clienteEditar = Cliente.objects.get(usuario = request.user)
+        dataCliente = {
+            'nombre':request.user.first_name,
+            'apellidos': request.user.last_name,
+            'email': request.user.email,
+            'direccion': clienteEditar.direccion,
+            'telefono':clienteEditar.telefono,
+            'dni':clienteEditar.dni,
+            'sexo':clienteEditar.sexo,
+            'fecha_nacmiento':clienteEditar.fecha_nacimiento
+        }
+    except:
+        dataCliente = {
+            'nombre':request.user.first_name,
+            'apellidos': request.user.last_name,
+            'email': request.user.email,
+        }
 
+    frmCliente = ClienteForm(dataCliente)
     context = {
         'frmCliente' : frmCliente
+    }
+
+    return render(request,'cuenta.html',context)
+
+def actualizarCliente(request):
+    mensaje = ""
+    if request.method == 'POST':
+        frmCliente = ClienteForm(request.POST)
+        if frmCliente.is_valid():
+            dataCliente = frmCliente.cleaned_data
+
+            #actualizar el usuario
+            actUsuario = User.objects.get(pk=request.user.id)
+            actUsuario.first_name = dataCliente["nombre"]
+            actUsuario.last_name = dataCliente["apellidos"]
+            actUsuario.email = dataCliente["email"]
+            actUsuario.save()
+
+            try:
+                actCliente = Cliente.objects.get(usuario = request.user)
+                actCliente.dni = dataCliente["dni"]
+                actCliente.direccion = dataCliente["direccion"]
+                actCliente.telefono = dataCliente["telefono"]
+                actCliente.sexo = dataCliente["sexo"]
+                actCliente.fecha_nacimiento = dataCliente["fecha_nacimiento"]
+                actCliente.save()
+            except:
+                nuevoCliente = Cliente()
+                nuevoCliente.usuario = actUsuario
+                nuevoCliente.dni = dataCliente["dni"]
+                nuevoCliente.direccion = dataCliente["direccion"]
+                nuevoCliente.telefono = dataCliente["telefono"]
+                nuevoCliente.sexo = dataCliente["sexo"]
+                nuevoCliente.fecha_nacimiento = dataCliente["fecha_nacimiento"]
+                nuevoCliente.save()
+            mensaje = "Datos Actualizados"
+        else:
+            mensaje = "Error al actualizar los datos"
+            
+    context = {
+        'mensaje':mensaje,
+        'frmCliente':frmCliente
     }
 
     return render(request,'cuenta.html',context)
