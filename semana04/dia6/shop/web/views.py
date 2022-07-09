@@ -1,6 +1,10 @@
 from django.shortcuts import render,redirect
 
-from .models import Categoria,Marca,Producto,Cliente
+from .models import (
+    Categoria,Marca,
+    Producto,Cliente,
+    Pedido,PedidoDetalle
+)
 
 from .carrito import Cart
 
@@ -208,3 +212,44 @@ def actualizarCliente(request):
     }
 
     return render(request,'cuenta.html',context)
+
+################# PEDIDOS ########################
+def registrarPedido(request):
+    if request.user.id is not None:
+        nroPedido = ''
+        montoTotal = 0
+        #registrar cabecera del pedido
+        clientePedido = Cliente.objects.get(usuario=request.user)
+        nuevoPedido = Pedido()
+        nuevoPedido.cliente = clientePedido
+        nuevoPedido.save()
+
+        #registrar Detalle de Pedido
+        carritoPedido = request.session.get('cart')
+        for key,value in carritoPedido.items():
+
+            productoPedido = Producto.objects.get(pk=value["producto_id"])
+
+            nuevoPedidoDetalle = PedidoDetalle()
+            nuevoPedidoDetalle.pedido = nuevoPedido
+            nuevoPedidoDetalle.producto = productoPedido
+            nuevoPedidoDetalle.cantidad = int(value['cantidad'])
+            nuevoPedidoDetalle.subtotal = float(value['subtotal'])
+            nuevoPedidoDetalle.save()
+            montoTotal += float(value['subtotal'])
+        
+        carrito = Cart(request)
+        carrito.clear()
+        #actualizamos el nro de pedido y monto
+        nroPedido = 'PED' + nuevoPedido.fecha_registro.strftime('%Y') + str(nuevoPedido.id)
+        nuevoPedido.nro_pedido = nroPedido
+        nuevoPedido.monto_total = montoTotal
+        nuevoPedido.save()
+
+        context = {
+            'pedido':nuevoPedido
+        }
+
+        return render(request,'pedido.html',context)
+    else:
+        return redirect('/login')

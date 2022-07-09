@@ -1,0 +1,9 @@
+{% extends 'layout.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<h1 class="maincont-ttl">PEDIDO NRO : {{pedido.nro_pedido}} - FECHA : {{pedido.fecha_registro}}</h1>
+    <ul class="b-crumbs">
+        <li><a href="/">Home</a></li>
+        <li>Pedido</li>
+    </ul>
+{% endblock %}
