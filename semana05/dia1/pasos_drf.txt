@@ -1,0 +1,18 @@
+1 - instalamos drf
+    pip install djangorestframework
+2 - instalamos en settings.
+    INSTALLED_APPS = [
+        'api',
+        'rest_framework',
+3 - en views importamos las librerias
+    from rest_framework.decorators import api_view
+    from rest_framework.response import Response
+4 - creamos el endpoint
+    @api_view(['GET'])
+    def home(request):
+        context = {
+            'status':True,
+            'content':'Bienvenido a mi API con DRF'
+        }
+
+    return Response(context)
