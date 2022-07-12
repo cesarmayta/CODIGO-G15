@@ -4,14 +4,11 @@ from .models import Cliente
 
 class DateInput(forms.DateInput):
     input_type = 'date'
-    attrs={
-            'class': 'form-control datetimepicker-input'
-        }
 
 class ClienteForm(forms.Form):
     SEXO_CHOICES =(
         ("M", "Masculino"),
-        ("F", "Femeno")
+        ("F", "Femenino")
     )
     dni = forms.CharField(label='DNI',max_length=8)
     nombre = forms.CharField(label='Nombres',max_length=200,required=True)
