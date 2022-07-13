@@ -25,6 +25,7 @@ class App extends Component{
     this.cambioCategoria = this.cambioCategoria.bind(this);
     this.guardar = this.guardar.bind(this);
     this.editar = this.editar.bind(this);
+    this.eliminar = this.eliminar.bind(this);
   }
 
   cambioNombre(e){
@@ -80,6 +81,21 @@ class App extends Component{
     })
 
   }
+
+  eliminar(cod){
+    let rpta =  window.confirm("¿Estas seguro de eliminar el registro");
+    if(rpta){
+      //eliminar registro - delete
+      axios.delete('http://localhost:8000/serie/'+cod+'/')
+      .then(res=>{
+        var temp = this.state.series.filter((serie) => serie.id !== cod);
+        this.setState({
+          series: temp
+        })
+      })
+    }
+  }
+
   guardar(e){
     e.preventDefault();
     const datos = {
@@ -161,6 +177,7 @@ class App extends Component{
                   <td>{serie.categoria}</td>
                   <td>
                       <Button variant="success" onClick={()=>this.editar(serie.id,index)}>Editar</Button>
+                      <Button variant="danger" onClick={()=>this.eliminar(serie.id)}>Eliminar</Button>
                   </td>
                 </tr>
               )
