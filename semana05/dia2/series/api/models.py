@@ -11,7 +11,7 @@ class Serie(models.Model):
     )
 
     nombre = models.CharField(max_length=200)
-    fecha_registro = models.DateField(auto_now_add=True)
+    fecha_registro = models.DateField()
     rating = models.IntegerField(default=0)
     categoria = models.CharField(max_length=10,choices=CATEGORIAS_CHOICES)
 
