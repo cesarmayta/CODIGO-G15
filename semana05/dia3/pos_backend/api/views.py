@@ -2,13 +2,17 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 
 from .models import (
-    Mesa,Categoria
+    Mesa,Categoria,
+    Plato
 )
 
 from .serializers import(
     MesaSerializer,
-    CategoriaSerializer
+    CategoriaSerializer,
+    PlatoSerializer,
+    CategoriaPlatosSerializer
 )
+
 
 class IndexView(APIView):
 
@@ -45,3 +49,44 @@ class CategoriaView(APIView):
         }
 
         return Response(context)
+
+class PlatoView(APIView):
+
+    def get(self,request):
+        data = Plato.objects.all()
+        serializerData = PlatoSerializer(data,many=True)
+
+        context = {
+            'ok':True,
+            'content':serializerData.data
+        }
+
+        return Response(context)
+
+class CategoriaDetail(APIView):
+
+    def get(self,request,categoria_id):
+        data = Categoria.objects.get(pk=categoria_id)
+        serializerData = CategoriaSerializer(data)
+
+        context = {
+            'ok':True,
+            'content':serializerData.data
+        }
+
+        return Response(context)
+
+class CategoriaPlatosView(APIView):
+
+    def get(self,request,categoria_id):
+        data = Categoria.objects.get(pk=categoria_id)
+        serializerData = CategoriaPlatosSerializer(data)
+
+        context = {
+            'ok':True,
+            'content':serializerData.data
+        }
+
+        return Response(context)
+
+
