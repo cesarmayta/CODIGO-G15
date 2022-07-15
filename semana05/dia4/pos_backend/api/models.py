@@ -80,6 +80,6 @@ class PedidoPlato(models.Model):
         db_table = 'tbl_pedido_plato'
 
     def __str__(self):
-        return self.plato_id
+        return str(self.plato_id)
 
     

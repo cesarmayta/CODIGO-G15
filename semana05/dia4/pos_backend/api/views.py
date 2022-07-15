@@ -3,14 +3,15 @@ from rest_framework.response import Response
 
 from .models import (
     Mesa,Categoria,
-    Plato
+    Plato,Pedido
 )
 
 from .serializers import(
     MesaSerializer,
     CategoriaSerializer,
     PlatoSerializer,
-    CategoriaPlatosSerializer
+    CategoriaPlatosSerializer,
+    PedidoSerializerPOST
 )
 
 
@@ -89,4 +90,18 @@ class CategoriaPlatosView(APIView):
 
         return Response(context)
 
+
+class PedidoView(APIView):
+
+    def post(self,request):
+        serializerData = PedidoSerializerPOST(data=request.data)
+        serializerData.is_valid(raise_exception=True)
+        serializerData.save()
+
+        context = {
+            'ok':True,
+            'content':serializerData.data
+        }
+
+        return Response(context)
 
