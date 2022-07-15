@@ -11,8 +11,10 @@ from .serializers import(
     CategoriaSerializer,
     PlatoSerializer,
     CategoriaPlatosSerializer,
-    PedidoSerializerPOST
+    PedidoSerializerPOST,
+    PedidoSerializerGET
 )
+
 
 
 class IndexView(APIView):
@@ -92,6 +94,17 @@ class CategoriaPlatosView(APIView):
 
 
 class PedidoView(APIView):
+
+    def get(self,request):
+        data = Pedido.objects.all()
+        serializerData = PedidoSerializerGET(data,many=True)
+
+        context = {
+            'ok':True,
+            'pedidos':serializerData.data
+        }
+
+        return Response(context)
 
     def post(self,request):
         serializerData = PedidoSerializerPOST(data=request.data)
