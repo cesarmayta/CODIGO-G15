@@ -35,7 +35,7 @@ const AuthLogin = (props) => {
 				<form className="formulario" onSubmit={handleSubmit}>
 					<label htmlFor="">Email:</label>
 					<input
-						type="email"
+						type="text"
 						className="formulario__input"
 						placeholder="Email"
 						name="correo"
