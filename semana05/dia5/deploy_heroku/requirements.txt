@@ -1,0 +1,11 @@
+django==3.2
+djangorestframework
+django-cors-headers
+djangorestframework-simplejwt
+cloudinary
+python-decouple
+gunicorn
+psycopg2
+dj-database_url
+whitenoise
+#d3
