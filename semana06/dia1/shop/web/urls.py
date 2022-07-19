@@ -19,5 +19,6 @@ urlpatterns = [
     path('logout',views.logoutUsuario,name='logoutUsuario'),
     path('cuenta',views.cuentaUsuario,name='cuentaUsuario'),
     path('actualizarCliente',views.actualizarCliente,name='actualizarCliente'),
-    path('registrarPedido',views.registrarPedido,name='registrarPedido')
+    path('registrarPedido',views.registrarPedido,name='registrarPedido'),
+    path('pedidopagado',views.pedidopagado,name='pedidopagado')
 ]

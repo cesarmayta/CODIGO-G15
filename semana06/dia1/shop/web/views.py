@@ -221,6 +221,11 @@ def actualizarCliente(request):
     return render(request,'cuenta.html',context)
 
 ################# PEDIDOS ########################
+
+### PARA PAGOS CON PAYPAL
+from django.conf import settings
+from paypal.standard.forms import PayPalPaymentsForm
+
 def registrarPedido(request):
     if request.user.id is not None:
         nroPedido = ''
@@ -253,10 +258,35 @@ def registrarPedido(request):
         nuevoPedido.monto_total = montoTotal
         nuevoPedido.save()
 
+        #CREAMOS BOTON DE PAGO PARA PAYPAL
+        request.session['paypal_pid'] = nuevoPedido.id
+        host = request.get_host()
+        paypal_datos = {
+            'business': settings.PAYPAL_RECEIVER_EMAIL,
+            'amount':montoTotal,
+            'item_name':'PEDIDO NRO' + nroPedido,
+            'invoice': nroPedido,
+            'notify_url':'http://' + host + '/' + 'paypal-ipn',
+            'return_url':'http://' + host + '/' + 'pedidopagado'
+        }
+
+        formPedidoPaypal = PayPalPaymentsForm(initial=paypal_datos)
+
+
         context = {
-            'pedido':nuevoPedido
+            'pedido':nuevoPedido,
+            'formpaypal':formPedidoPaypal
         }
 
         return render(request,'pedido.html',context)
     else:
         return redirect('/login')
+
+def pedidopagado(request):
+    pedidoID = request.session.get('paypal_pid')
+    print(pedidoID)
+    pedidoEditar = Pedido.objects.get(pk=pedidoID)
+    pedidoEditar.estado = '1'
+    pedidoEditar.save()
+
+    return render(request,'gracias.html')

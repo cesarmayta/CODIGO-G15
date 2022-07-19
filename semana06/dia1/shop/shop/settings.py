@@ -11,6 +11,10 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
+import os
+from dotenv import load_dotenv
+load_dotenv()
+import cloudinary
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -35,6 +39,8 @@ INSTALLED_APPS = [
     'api',
     'rest_framework',
     'crispy_forms',
+    'cloudinary',
+    'paypal.standard.ipn',
     'django_admin_tailwind',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -79,15 +85,17 @@ WSGI_APPLICATION = 'shop.wsgi.application'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'db_shop_g15',
-        'USER': 'root',
-        'PASSWORD': '',
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
-    }
+  'default': {
+    'ENGINE': 'django.db.backends.mysql',
+    'NAME': 'db_shop_g15',
+    'HOST': 'localhost',
+    'PORT': '3306',
+    'USER': 'root',
+    'PASSWORD': '',
+    #'OPTIONS': {'ssl': {'ca': os.getenv('MYSQL_ATTR_SSL_CA')}}
+  }
 }
+
 
 
 # Password validation
@@ -131,8 +139,18 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-import os
+
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 MEDIA_URL = '/media/'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+cloudinary.config(
+    cloud_name = os.getenv('CLOUDINARY_CLOUD_NAME'),
+    api_key= os.getenv('CLOUDINARY_API_KEY'),
+    api_secret = os.getenv('CLOUDINARY_API_SECRET')
+)
+
+PAYPAL_TEST = True
+
+PAYPAL_RECEIVER_EMAIL = os.getenv('PAYPAL_EMAIL')
