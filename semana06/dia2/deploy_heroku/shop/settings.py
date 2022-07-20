@@ -15,6 +15,7 @@ import os
 from dotenv import load_dotenv
 load_dotenv()
 import cloudinary
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -85,7 +86,7 @@ WSGI_APPLICATION = 'shop.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-DATABASES = {
+"""DATABASES = {
   'default': {
     'ENGINE': 'django.db.backends.mysql',
     'NAME': os.getenv('MYSQL_ADDON_DB'),
@@ -94,6 +95,12 @@ DATABASES = {
     'USER': os.getenv('MYSQL_ADDON_USER'),
     'PASSWORD': os.getenv('MYSQL_ADDON_PASSWORD'),
   }
+}"""
+
+DATABASES = {
+    'default': dj_database_url.config(
+        default=os.getenv('DATABASE_URL')
+    )
 }
 
 
