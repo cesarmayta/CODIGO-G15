@@ -1,11 +1,16 @@
-from rest_framework.authentication import SessionAuthentication, BasicAuthentication
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.authentication import (
+    SessionAuthentication, BasicAuthentication,
+    TokenAuthentication)
+from rest_framework.permissions import IsAuthenticated,IsAdminUser 
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
+from rest_framework_simplejwt.authentication import JWTAuthentication
+
 class ExampleView(APIView):
-    authentication_classes = [SessionAuthentication, BasicAuthentication]
-    permission_classes = [IsAuthenticated]
+    authentication_classes = [SessionAuthentication, 
+    BasicAuthentication,TokenAuthentication,JWTAuthentication]
+    permission_classes = [IsAuthenticated,IsAdminUser ]
 
     def get(self, request, format=None):
         content = {
