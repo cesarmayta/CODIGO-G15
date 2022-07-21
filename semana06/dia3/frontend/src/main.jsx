@@ -9,7 +9,7 @@ import {
   Route
 } from 'react-router-dom';
 
-import './index.css'
+import './css/styles.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
  <BrowserRouter>
