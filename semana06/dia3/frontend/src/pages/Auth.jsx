@@ -1,4 +1,6 @@
 import React from 'react';
+import AuthService from '../services/auth.service';
+import {createBrowserHistory} from 'history';
 
 class Auth extends React.Component {
     constructor(props){
@@ -37,6 +39,21 @@ class Auth extends React.Component {
 
         console.log('usuario : ' + this.state.usuario);
         console.log('password : ' + this.state.password);
+
+        AuthService.login(this.state.usuario,this.state.password).then(
+            ()=>{
+                const history = createBrowserHistory();
+                history.push('/');
+                window.location.reload();
+            },
+            error =>{
+                const mensajeError = 'datos no validos';
+                this.setState({
+                    loading:false,
+                    message:mensajeError
+                })
+            }
+        )
 
     }
 
@@ -80,6 +97,13 @@ class Auth extends React.Component {
                                                     <input type="submit" className='btn btn-primary' value='Login' />
                                                 </div>
                                             </form>
+                                            {this.state.message && (
+                                                <div className='form-group'>
+                                                    <div className='alert alert-danger'>
+                                                        {this.state.message}
+                                                    </div>
+                                                </div>
+                                            )}
                                         </div>
                                         <div className="card-footer text-center py-3">
                                             <div className="small"><a href="register.html">Need an account? Sign up!</a></div>
