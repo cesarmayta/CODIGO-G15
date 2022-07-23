@@ -1,6 +1,6 @@
 from flask import Flask,jsonify
-from pymongo import MongoClient
 from bson.json_util import dumps
+from flask_pymongo import PyMongo
 
 import os
 from dotenv import load_dotenv
@@ -8,11 +8,9 @@ load_dotenv()
 
 import json
 
-cliente = MongoClient(os.getenv('MONGO_URI'))
-
-db = cliente['db_codigo']
-
 app = Flask(__name__)
+app.config["MONGO_URI"] = os.getenv('MONGO_URI')
+mongo = PyMongo(app)
 
 @app.route('/')
 def index():
@@ -24,11 +22,11 @@ def index():
 @app.route('/alumno')
 def getAlumno():
 
-    colAlumnos = db['alumno']
-
+    colAlumnos = mongo.db.alumno.find({},{"_id":0,"nombre":1,"email":1})
+    print(colAlumnos)
     context = {
         'status':True,
-        'content':json.loads(dumps(colAlumnos.find({},{"_id":0,"nombre":1,"email":1})))
+        'content':json.loads(dumps(colAlumnos))
     }
 
     return jsonify(context)
