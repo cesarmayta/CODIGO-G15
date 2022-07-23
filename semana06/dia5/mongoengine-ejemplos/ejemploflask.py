@@ -6,6 +6,10 @@ from dotenv import load_dotenv
 import os
 from os.path import join,dirname
 
+import json
+
+from bson.json_util import dumps
+
 dotenv_path = join(dirname(__file__),'.env')
 load_dotenv(dotenv_path)
 
@@ -59,8 +63,21 @@ def setAlumno():
 #lista_alumnos_schema = AlumnoSchema(many=True)
 @app.route('/alumno')
 def getAlumno():
-    listaAlumnos = Alumno.objects #db.alumno.find()
-    return alumnos_schema.dumps(listaAlumnos)
+    #listaAlumnos = Alumno.objects #db.alumno.find()
+    lstAlumnos = []
+    for usu in Alumno.objects:
+        dicAlumno = {
+            'nombre' : usu.nombre,
+            'email' : usu.email
+        }
+        lstAlumnos.append(dicAlumno)
+
+    print(lstAlumnos)
+    #dump_data = alumnos_schema.dump(lstAlumnos)
+    dump_data = jsonify(lstAlumnos)
+    #dump_data = json.loads(dumps(Alumno.objects))
+
+    return dump_data
 
 
 if __name__ == "__main__":
