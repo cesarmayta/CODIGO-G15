@@ -1,6 +1,9 @@
 from pymongo import MongoClient
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
-cliente = MongoClient('mongodb://localhost:27017')
+cliente = MongoClient(os.getenv('MONGO_URI'))
 
 db_codigo = cliente['db_codigo']
 
