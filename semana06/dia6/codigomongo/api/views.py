@@ -1,8 +1,13 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
-from .models import Alumno
-from .serializers import AlumnoSerializer
+from rest_framework import generics
+from rest_framework_mongoengine import generics as drfme_generics
+
+from .models import Alumno,Matricula
+from .serializers import AlumnoSerializer,MatriculaSerializer
+
+
 
 class AlumnoView(APIView):
 
@@ -17,3 +22,7 @@ class AlumnoView(APIView):
         serData.save()
 
         return Response(serData.data)
+
+class MatriculaView(drfme_generics.ListCreateAPIView):
+    queryset = Matricula.objects.all()
+    serializer_class = MatriculaSerializer
