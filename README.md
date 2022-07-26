@@ -56,47 +56,50 @@ Hola! 👋🏻 las ramas están organizadas por semana, es decir **CADA RAMA SER
   </li>
   <li>SEMANA 06 : AUTENTICACIÓN API MONGODB -https://github.com/cesarmayta/CODIGO-G15/tree/semana06
       <ul>
-        <li>dia1 : introducción a servicios restfull con djangorestframework</li>
-        <li>dia2 : vistas basadas en clases</li>
-        <li>dia3 : sistema POS - catalogos</li>
-        <li>dia4 : sistemas POS - Pedidos</li>
-        <li>dia5 : despliegue de backend y front end</li>
+        <li>dia1 : pasarelas de pagos con django(paypal)</li>
+        <li>dia2 : autenticación y autorización</li>
+        <li>dia3 : autenticación con drf y react</li>
+        <li>dia4 : mongodb</li>
+        <li>dia5 : monengine con flask</li>
+        <li>dia6 : monengine con django y djongo</li>
       </ul>
   </li>
   <li>SEMANA 07 : CLOUD: https://github.com/cesarmayta/CODIGO-G15/tree/semana07
       <ul>
-        <li>dia1 : introducción a servicios restfull con djangorestframework</li>
-        <li>dia2 : vistas basadas en clases</li>
-        <li>dia3 : sistema POS - catalogos</li>
-        <li>dia4 : sistemas POS - Pedidos</li>
-        <li>dia5 : despliegue de backend y front end</li>
+        <li>dia1 : instalación y configuracion de django en linux</li>
+        <li>dia2 : despliegue de django en AWS</li>
+        <li>dia3 : despliegue de django en Azure</li>
+        <li>dia4 : introducción a docker</li>
+        <li>dia5 : CI/CD</li>
       </ul>
   </li>
-  <li>SEMANA 08 : NODEJS :https://github.com/cesarmayta/CODIGO-G15/tree/semana08
+  <li>SEMANA 08 : NODEJS y EXPRESS :https://github.com/cesarmayta/CODIGO-G15/tree/semana08
       <ul>
-        <li>dia1 : introducción a servicios restfull con djangorestframework</li>
-        <li>dia2 : vistas basadas en clases</li>
-        <li>dia3 : sistema POS - catalogos</li>
-        <li>dia4 : sistemas POS - Pedidos</li>
-        <li>dia5 : despliegue de backend y front end</li>
+        <li>dia1 : Fundamentos de NodeJs</li>
+        <li>dia2 : Introducción a Express</li>
+        <li>dia3 : Clean Code con Express</li>
+        <li>dia4 : Middlewares y ORM con Express</li>
+        <li>dia5 : Autenticación con JWT</li>
+        <li>dia6 : Sequelize</li>
       </ul>
   </li>
-  <li>SEMANA 09 : EXPRESS :https://github.com/cesarmayta/CODIGO-G15/tree/semana09
+  <li>SEMANA 09 : STACK MERN :https://github.com/cesarmayta/CODIGO-G15/tree/semana09
       <ul>
-        <li>dia1 : introducción a servicios restfull con djangorestframework</li>
-        <li>dia2 : vistas basadas en clases</li>
-        <li>dia3 : sistema POS - catalogos</li>
-        <li>dia4 : sistemas POS - Pedidos</li>
-        <li>dia5 : despliegue de backend y front end</li>
+        <li>dia1 : Mongoose con Express</li>
+        <li>dia2 : Arquitectura MVC con Express</li>
+        <li>dia3 : Integración con React</li>
+        <li>dia4 : Autenticación con google</li>
+        <li>dia5 : despliegue de Stack Mern</li>
       </ul>
   </li>
   <li>SEMANA 10 : MICROSERVICIOS : https://github.com/cesarmayta/CODIGO-G15/tree/semana10
       <ul>
-        <li>dia1 : introducción a servicios restfull con djangorestframework</li>
-        <li>dia2 : vistas basadas en clases</li>
-        <li>dia3 : sistema POS - catalogos</li>
-        <li>dia4 : sistemas POS - Pedidos</li>
-        <li>dia5 : despliegue de backend y front end</li>
+        <li>dia1 : introducción a arquitectura basada en microservicios</li>
+        <li>dia2 : Aplicación real de microservicios</li>
+        <li>dia3 : despliegue de microservicios</li>
+        <li>dia4 : api gateway</li>
+        <li>dia5 : stocket io</li>
+        <li>dia6 : redis</li>
       </ul>
   </li>
 </ul>
