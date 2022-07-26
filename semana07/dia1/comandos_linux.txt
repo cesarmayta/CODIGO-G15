@@ -1,0 +1,65 @@
+sudo -- es para poder ejecutar cualquier comanda con privilegios de administrador
+
+NOTA: si se cambia la direccion ip y quieres ver cual es la nueva
+
+sudo apt install net-tools
+
+ifconfig
+
+
+1 - actualizamos ubuntu
+sudo apt update
+nota: nos pedira el password del administrador que es igual al password del usuario codigo
+
+2 - conexión por ssh
+abrir terminal de gitbash
+ejecutar ssh codigo@direccion_ip_del_servidor
+
+3 - instalamos un servidor web con nginx
+
+sudo apt install nginx
+
+verificamos ingresando desde el navegador a la dirección ip del servidor
+
+http://192.168.0.28
+
+comandos para ver estado y reiniciar servidor
+
+sudo systemctl status nginx : permite ver el estado del servidor
+sudo systemctl stop nginx : detiene el servidor
+sudo systemctl start nginx : inicia el servidor
+sudo systemctl restart nginx : reinicia el servidor
+
+creamos nuestra primera pagina web 
+
+1 - ingresamos a la carpeta html
+
+cd /var/www/html
+
+2 - ingresamos al editor vim 
+
+sudo vim holamundo.html
+
+presionamos la tecla i 
+
+escribiemos el siguiente codigo
+
+<h1><center>HOLA MUNDO EN NGINX</center></h1>
+
+presionamos esc + :wq
+
+
+############## CREAR PROYECTON CON DJANGO EN ubuntu
+
+sudo apt install python3.10-venv
+
+python3 - m venv venv
+
+source venv/bin/activate
+
+pip install django
+
+
+
+
+
