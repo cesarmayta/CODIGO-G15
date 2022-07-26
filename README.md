@@ -54,13 +54,52 @@ Hola! 👋🏻 las ramas están organizadas por semana, es decir **CADA RAMA SER
         <li>dia5 : despliegue de backend y front end</li>
       </ul>
   </li>
+  <li>SEMANA 06 : AUTENTICACIÓN API MONGODB -https://github.com/cesarmayta/CODIGO-G15/tree/semana06
+      <ul>
+        <li>dia1 : introducción a servicios restfull con djangorestframework</li>
+        <li>dia2 : vistas basadas en clases</li>
+        <li>dia3 : sistema POS - catalogos</li>
+        <li>dia4 : sistemas POS - Pedidos</li>
+        <li>dia5 : despliegue de backend y front end</li>
+      </ul>
+  </li>
+  <li>SEMANA 07 : CLOUD: https://github.com/cesarmayta/CODIGO-G15/tree/semana07
+      <ul>
+        <li>dia1 : introducción a servicios restfull con djangorestframework</li>
+        <li>dia2 : vistas basadas en clases</li>
+        <li>dia3 : sistema POS - catalogos</li>
+        <li>dia4 : sistemas POS - Pedidos</li>
+        <li>dia5 : despliegue de backend y front end</li>
+      </ul>
+  </li>
+  <li>SEMANA 08 : NODEJS :https://github.com/cesarmayta/CODIGO-G15/tree/semana08
+      <ul>
+        <li>dia1 : introducción a servicios restfull con djangorestframework</li>
+        <li>dia2 : vistas basadas en clases</li>
+        <li>dia3 : sistema POS - catalogos</li>
+        <li>dia4 : sistemas POS - Pedidos</li>
+        <li>dia5 : despliegue de backend y front end</li>
+      </ul>
+  </li>
+  <li>SEMANA 09 : EXPRESS :https://github.com/cesarmayta/CODIGO-G15/tree/semana09
+      <ul>
+        <li>dia1 : introducción a servicios restfull con djangorestframework</li>
+        <li>dia2 : vistas basadas en clases</li>
+        <li>dia3 : sistema POS - catalogos</li>
+        <li>dia4 : sistemas POS - Pedidos</li>
+        <li>dia5 : despliegue de backend y front end</li>
+      </ul>
+  </li>
+  <li>SEMANA 10 : MICROSERVICIOS : https://github.com/cesarmayta/CODIGO-G15/tree/semana10
+      <ul>
+        <li>dia1 : introducción a servicios restfull con djangorestframework</li>
+        <li>dia2 : vistas basadas en clases</li>
+        <li>dia3 : sistema POS - catalogos</li>
+        <li>dia4 : sistemas POS - Pedidos</li>
+        <li>dia5 : despliegue de backend y front end</li>
+      </ul>
+  </li>
 </ul>
-SEMANA 06 : AUTENTICACIÓN API MONGODB -https://github.com/cesarmayta/CODIGO-G15/tree/semana06</br>
-SEMANA 07 : CLOUD: https://github.com/cesarmayta/CODIGO-G15/tree/semana07</br>
-SEMANA 08 : NODEJS :https://github.com/cesarmayta/CODIGO-G15/tree/semana08</br>
-SEMANA 09 : EXPRESS :https://github.com/cesarmayta/CODIGO-G15/tree/semana09</br>
-SEMANA 10 : MICROSERVICIOS : https://github.com/cesarmayta/CODIGO-G15/tree/semana10</br>
-
 
 # Instrucciones
 
