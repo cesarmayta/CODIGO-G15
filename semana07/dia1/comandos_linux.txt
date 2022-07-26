@@ -59,6 +59,19 @@ source venv/bin/activate
 
 pip install django
 
+django-admin startproject prueba
+
+cd prueba
+sudo vim settings.py
+
+editar ALLOWED_HOST = ['*']
+
+esc + :wq
+
+python3 manage.py runserver 0.0.0.0:8000
+
+
+
 
 
 
