@@ -6,6 +6,13 @@ FROM ubuntu
 #ejecutar comandos en mi contenedor ubuntu
 RUN apt-get update
 RUN apt-get install python3 python3-dev -y
+RUN mkdir /app
+
+#defino mi directorio de trabajo
+WORKDIR /app
+
+#copio los archivos de mi local a mi contenedor
+ADD index.html .
 
 #ejecuta un comando de python3
 CMD python3 -m http.server 5000
