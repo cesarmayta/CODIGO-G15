@@ -1,3 +1,7 @@
+#para iniciar docker
+
+sudo service docker start
+
 #para crear la imagen
 
 docker build -t shopg15-image:1.0 .
@@ -18,3 +22,12 @@ docker-compose up -d
 #para crear un super usuario en mi contenedor
 
 docker exec -it dia5-web-1 python manage.py createsuperuser
+
+
+#subir una imagen a docker hub
+
+paso 1 : docker login
+
+paso 2 : docker tag dia5_web cmaytag15/shop-g15:1.0
+
+paso 3 : docker push cmaytag15/shop-g15:1.0
