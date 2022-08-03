@@ -1,0 +1,11 @@
+#para crear la imagen
+
+docker build -t shopg15-image:1.0 .
+
+# para crear el contenedor
+
+docker run -d -p 8000:8000 --name shopg15-container shopg15-image:1.0
+
+# para ver logs de mi contenedor
+
+docker logs shopg15-container
