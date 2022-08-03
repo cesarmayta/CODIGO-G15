@@ -17,4 +17,4 @@ docker-compose up -d
 
 #para crear un super usuario en mi contenedor
 
-docker exec -it shopg15-container python manage.py createsuperuser
+docker exec -it dia5-web-1 python manage.py createsuperuser
