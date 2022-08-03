@@ -9,3 +9,12 @@ docker run -d -p 8000:8000 --name shopg15-container shopg15-image:1.0
 # para ver logs de mi contenedor
 
 docker logs shopg15-container
+
+#para desplegar usando docker-compose
+
+docker-compose build
+docker-compose up -d
+
+#para crear un super usuario en mi contenedor
+
+docker exec -it shopg15-container python manage.py createsuperuser

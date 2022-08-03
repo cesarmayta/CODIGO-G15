@@ -6,3 +6,6 @@ djangorestframework
 python-dotenv
 cloudinary
 django-paypal
+gunicorn
+psycopg2
+dj-database-url
