@@ -1,10 +1,12 @@
 const express = require('express');
+const cors = require('cors')
 
 const mysqlConnection = require('./database');
 
 const app = express();
 const port = 5000;
 
+app.use(cors());
 //permite que el servidor reciba data en json
 app.use(express.json());
 
@@ -80,6 +82,18 @@ app.delete('/alumno/:id',(req,res)=>{
                 console.log(err);
             }
         })
+})
+
+
+//api rest de cursos
+app.get('/curso',(req,res)=>{
+    mysqlConnection.query('select * from tbl_curso',(err,rows,fields)=>{
+        if(!err){
+            res.json(rows);
+        }else{
+            console.log(err);
+        }
+    })
 })
 
 app.listen(port,()=>{
