@@ -5,6 +5,9 @@ const alumnoApi = require('./routes/alumno.routes');
 
 const app = express();
 
+//para recibir data en json
+app.use(express.json());
+
 app.get('/',(req,res)=>{
     res.json({
         'status':true,
