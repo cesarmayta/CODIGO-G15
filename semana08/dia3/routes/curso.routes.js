@@ -1,18 +1,18 @@
 const express = require('express');
-const AlumnoService = require('../services/alumno.service');
+const CursoService = require('../services/curso.service');
 
-function alumnoApi(app){
+function CursoApi(app){
     const router = express.Router();
-    app.use('/alumno',router);
+    app.use('/curso',router);
 
-    const objAlumnoService = new AlumnoService();
+    const objCursoService = new CursoService();
 
     router.get('/',async function(req,res){
         try{
-            const alumnos = await objAlumnoService.getAll();
+            const cursos = await objCursoService.getAll();
             res.status(200).json({
                 status:true,
-                content:alumnos
+                content:cursos
             })
         }catch(err){
             console.log(err)
@@ -21,13 +21,13 @@ function alumnoApi(app){
 
 
     router.post("/",async function(req,res){
-        const {body : alumno} = req;
-        console.log(alumno);
+        const {body : curso} = req;
+        console.log(curso);
         try{
-            const crearAlumno = await objAlumnoService.create({alumno});
+            const crearCurso = await objCursoService.create({curso});
             res.status(201).json({
                 status:true,
-                content:crearAlumno[0]
+                content:crearCurso[0]
             })
         }catch(err){
             console.log(err);
@@ -37,11 +37,11 @@ function alumnoApi(app){
     router.get("/:id",async function(req,res){
         const {id} = req.params;
         try{
-            const alumno = await objAlumnoService.getById(id);
-            if(alumno.length > 0){
+            const curso = await objCursoService.getById(id);
+            if(curso.length > 0){
                 res.status(200).json({
                     status:true,
-                    content:alumno[0]
+                    content:curso[0]
                 })
             }else{
                 res.status(204).json({
@@ -59,11 +59,11 @@ function alumnoApi(app){
         const {body: data} = req;
 
         try{
-            const alumno = await objAlumnoService.update({data,id});
-            if(alumno.length > 0){
+            const curso = await objCursoService.update({data,id});
+            if(curso.length > 0){
                 res.status(200).json({
                     status:true,
-                    content:alumno[0]
+                    content:curso[0]
                 })
             }else{
                 res.status(204).json({
@@ -81,11 +81,11 @@ function alumnoApi(app){
         const {id} = req.params;
 
         try{
-            const alumno = await objAlumnoService.delete(id);
-            if(alumno){
+            const curso = await objCursoService.delete(id);
+            if(curso){
                 res.status(200).json({
                     status:true,
-                    content:'alumno eliminado'
+                    content:'Curso eliminado'
                 })
             }else{
                 res.status(204).json({
@@ -100,4 +100,4 @@ function alumnoApi(app){
     })
 }
 
-module.exports = alumnoApi;
+module.exports = CursoApi;
