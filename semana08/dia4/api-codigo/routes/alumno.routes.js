@@ -3,6 +3,9 @@ const AlumnoService = require('../services/alumno.service');
 
 const boom = require('@hapi/boom');
 
+const validatorHandler = require('../middlewares/validator.handler');
+const {createAlumnoSchema,updateAlumnoSchema} = require('../schemas/alumno.schema');
+
 function alumnoApi(app){
     const router = express.Router();
     app.use('/alumno',router);
@@ -22,7 +25,9 @@ function alumnoApi(app){
     })
 
 
-    router.post("/",async function(req,res){
+    router.post("/",
+    validatorHandler(createAlumnoSchema,'body')
+    ,async function(req,res){
         const {body : alumno} = req;
         console.log(alumno);
         try{
@@ -53,7 +58,9 @@ function alumnoApi(app){
         }
     })
 
-    router.put('/:id',async function(req,res){
+    router.put('/:id',
+        validatorHandler(updateAlumnoSchema,'body')
+        ,async function(req,res){
         const {id} = req.params;
         const {body: data} = req;
 
