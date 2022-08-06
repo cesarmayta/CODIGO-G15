@@ -14,7 +14,7 @@ app.use(cors());
 app.use(express.json());
 
 app.get('/',(req,res)=>{
-    console.log(a + 3);
+    //console.log(a + 3);
     res.json({
         'status':true,
         'content':'servidor activo'
