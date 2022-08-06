@@ -9,15 +9,27 @@ function App() {
   const [alumnos,setAlumnos] = useState([]);
   const [nombre,setNombre] = useState('');
   const [email,setEmail] = useState('');
+  const [id,setId] = useState(0);
+  const [pos,setPos] = useState(null);
 
 
   useEffect(()=>{
     axios.get('http://localhost:5000/alumno')
     .then(res=>{
-      console.log(res.data);
-      setAlumnos(res.data);
+      console.log(res.data.content);
+      setAlumnos(res.data.content);
     })
   },[]);
+
+  function mostrar(cod,index){
+    axios.get('http://localhost:5000/alumno/'+cod)
+    .then(res=>{
+      setPos(index);
+      setId(res.data.content.alumno_id);
+      setNombre(res.data.content.alumno_nombre);
+      setEmail(res.data.content.alumno_email);
+    })
+  }
 
   function guardar(e){
     e.preventDefault();
@@ -25,16 +37,38 @@ function App() {
       nombre:nombre,
       email:email
     }
-    axios.post('http://localhost:5000/alumno',datos)
-    .then(res=>{
-      var temp = alumnos;
-      temp.push(res.data);
-      setNombre('');
-      setEmail('');
-      setAlumnos(temp);
-    }).catch((error)=>{
-      console.log(error.toString());
-    })
+
+    let cod = id;
+
+    if(cod > 0){
+      //actualizar
+      axios.put('http://localhost:5000/alumno/'+cod,datos)
+      .then(res=>{
+        let indx = pos;
+        alumnos[indx] = res.data.content;
+        var temp = alumnos;
+        setPos(null);
+        setId(0);
+        setNombre('');
+        setEmail('');
+        setAlumnos(temp);
+      }).catch((error)=>{
+        console.log(error.toString());
+      })
+    }else{
+      //insertar
+        axios.post('http://localhost:5000/alumno',datos)
+        .then(res=>{
+          var temp = alumnos;
+          temp.push(res.data.content);
+          setNombre('');
+          setEmail('');
+          setAlumnos(temp);
+        }).catch((error)=>{
+          console.log(error.toString());
+        })
+    }
+    
   }
 
   function eliminar(cod){
@@ -68,6 +102,7 @@ function App() {
                   <td>{alumno.alumno_nombre}</td>
                   <td>{alumno.alumno_email}</td>
                   <td>
+                  <Button variant="success" onClick={()=>mostrar(alumno.alumno_id,index)}>Editar</Button>
                   <Button variant="danger" onClick={()=>eliminar(alumno.alumno_id)}>Eliminar</Button>
                   </td>
                 </tr>
@@ -77,6 +112,7 @@ function App() {
         </Table>
         <br/>
         <Form onSubmit={guardar}>
+          <Form.Control type="hidden" value={id}/>
           <Form.Group className='mb-3'>
             <Form.Label>Nombre:</Form.Label>
             <Form.Control type="text" value={nombre} onChange={(e)=> setNombre(e.target.value)} />
