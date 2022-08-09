@@ -25,25 +25,34 @@ class UsuarioService{
     }
 
     async authenticate({usuario}){
-        const sqlAuth = `select usuario_id as id,usuario_password as pwd from tbl_usuario
+        try{
+            const sqlAuth = `select usuario_id as id,usuario_password as pwd from tbl_usuario
                         where usuario_nombre = '${usuario.usuario}'`;
-        const result = await this.sql.querySql(sqlAuth);
-        console.log('usuario id : ' + result[0].id);
-        console.log('usuario pwd: ' + result[0].pwd);
-        if(await bcrypt.compare(usuario.password,result[0].pwd)){
-            const usuarioFound = {
-                id:result[0].id,
-                nombre:usuario.nombre
+            const result = await this.sql.querySql(sqlAuth);
+            console.log('usuario id : ' + result[0].id);
+            console.log('usuario pwd: ' + result[0].pwd);
+            if(await bcrypt.compare(usuario.password,result[0].pwd)){
+                const usuarioFound = {
+                    id:result[0].id,
+                    nombre:usuario.nombre
+                }
+                return usuarioFound;
             }
-            return usuarioFound;
-        }
-        else{
+            else{
+                const usuarioNotFound = {
+                    id:0,
+                    nombre:'none'
+                }
+                return usuarioNotFound
+            }
+        }catch(err){
             const usuarioNotFound = {
                 id:0,
                 nombre:'none'
             }
             return usuarioNotFound
         }
+        
     }
 }
 
