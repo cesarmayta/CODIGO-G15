@@ -13,11 +13,14 @@ function authApi(app){
         const {body: usuario} = req;
 
         const authUsuario = await objUsuarioService.authenticate({usuario});
-        if(authUsuario){
+        if(authUsuario.id > 0){
             //creamos el token
             const token = jwt.sign(
-                {'usuario':usuario.usuario},
-                'qwerty2022'
+                authUsuario,
+                'qwerty2022',
+                {
+                    expiresIn:'1h'
+                }
             )
             res.status(200).json({
                 status:true,
