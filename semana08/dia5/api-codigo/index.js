@@ -4,6 +4,7 @@ const cors = require('cors');
 
 const alumnoApi = require('./routes/alumno.routes');
 const cursoApi = require('./routes/curso.routes');
+const authApi = require('./routes/auth.routes');
 
 const {errorHandler,boomErrorHandler} = require('./middlewares/error.handler');
 
@@ -23,9 +24,11 @@ app.get('/',(req,res)=>{
 
 alumnoApi(app);
 cursoApi(app);
+authApi(app);
 
 //middlewares de errores
 app.use(errorHandler);
 app.use(boomErrorHandler);
+
 
 app.listen(config.port,()=>console.log('servidor en http://localhost:'+config.port))
