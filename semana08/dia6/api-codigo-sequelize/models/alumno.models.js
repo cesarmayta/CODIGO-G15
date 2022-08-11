@@ -1,6 +1,6 @@
 const {Model,DataTypes,Sequelize} = require('sequelize');
 
-const TABLE_NAME = 'tbl_alumno';
+const ALUMNO_TABLE = 'alumno';
 
 
 const AlumnoSchema = {
@@ -24,18 +24,21 @@ const AlumnoSchema = {
 }
 
 class Alumno extends Model {
-    static associate(){
-
+    static associate(models){
+        this.hasMany(models.Matricula,{
+            as:'matriculas',
+            foreignKey:'alumnoId'
+        })
     }
 
     static config(sequelize){
         return {
             sequelize,
-            tableName: TABLE_NAME,
+            tableName: ALUMNO_TABLE,
             modelName:'Alumno',
             timestamps:false
         }
     }
 }
 
-module.exports =  {TABLE_NAME,AlumnoSchema,Alumno}
+module.exports =  {Alumno,AlumnoSchema,ALUMNO_TABLE}
