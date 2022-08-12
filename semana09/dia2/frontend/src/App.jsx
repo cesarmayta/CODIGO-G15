@@ -15,6 +15,23 @@ function App(){
       })
   },[])
 
+  function agregarTarea(e){
+    e.preventDefault();
+    let data = {
+      nombre:nombre,
+      estado:estado
+    }
+
+    axios.post('http://localhost:5000/tarea',data)
+    .then(res=>{
+      var temp = tareas;
+      temp.push(res.data.content)
+      setNombre('');
+    }).catch((error)=>{
+      console.log(error.toString());
+    })
+  }
+
   return (
     <section className="vh-100">
       <Container className="container py-5 h-100">
@@ -23,6 +40,18 @@ function App(){
             <Card className="card rounded-3">
               <Card.Body className="card-body p-4">
                 <h4 className="text-center my-3 pb-3">Lista de Tareas</h4>
+
+                <Col className="col-12">
+                  <Form onSubmit={agregarTarea}>
+                    <div className="form-outline">
+                      <input type="text" id="form1" className="form-control" onChange={(e)=>setNombre(e.target.value)} />
+                    </div>
+                    <div className="form-outline">
+                      <Button type="submit" className="btn btn-primary">Agregar</Button>
+                    </div>
+                  </Form>
+                </Col>
+
                 <Table className="table mb-4">
                   <thead>
                     <tr>
