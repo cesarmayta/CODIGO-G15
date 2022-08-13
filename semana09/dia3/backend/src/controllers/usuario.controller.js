@@ -31,5 +31,35 @@ usuarioController.create = async (req,res)=>{
     })
 }
 
+usuarioController.auth = async (req,res)=>{
+    const {usuario,password} = req.body;
+
+    const authUsuario = await usuarioModel.findOne({usuario});
+
+    if(authUsuario && (await bcrypt.compare(password,authUsuario.password))){
+        //datos de auth correctos
+        const token = jwt.sign(
+            {usu_id:authUsuario._id,usu_name:authUsuario.usuario},
+            'qwerty123',
+            {
+                expiresIn:'1h'
+            }
+        )
+
+        let dataResponse = {
+            status:true,
+            content:token
+        }
+
+        res.status(200).json(dataResponse);
+    }
+    else{
+        res.status(400).json({
+            status:false,
+            content:'usuario o password invalidos'
+        })
+    }
+}
+
 module.exports = usuarioController;
 
