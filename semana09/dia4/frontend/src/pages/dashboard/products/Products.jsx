@@ -84,10 +84,10 @@ export const Products = () => {
                 <table>
                     <thead>
                         <tr>
-                            <th>Product name</th>
-                            <th>Product description</th>
-                            <th>Product price</th>
-                            <th>Product image</th>
+                            <th>Nombre</th>
+                            <th>Descripción</th>
+                            <th>Precio</th>
+                            <th>Imagen</th>
                             {/* <th>Product category</th> */}
                         </tr>
                     </thead>
@@ -108,7 +108,7 @@ export const Products = () => {
             </div>
 
             <h4 className='Products-subtitle'>Create product</h4>
-            <form className='Products-create-form' onSubmit={createProduct}>
+            <form className='Products-create-form' onSubmit={createProduct} encType="multipart/form-data">
                 <div className="form-group">
                     <label htmlFor="productoNombre">Nombre de producto</label>
                     <input
@@ -143,7 +143,7 @@ export const Products = () => {
                 <div className="form-group">
                     <label htmlFor="productoImagen">Product image</label>
                     <input
-                        type="text"
+                        type="file"
                         name='productoImagen'
                         id='productoImagen'
                         value={product.productoImagen}
