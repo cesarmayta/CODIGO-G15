@@ -12,4 +12,7 @@ app.get('/',(req,res)=>{
     })
 })
 
+//rutas
+app.use('/producto',require('./routes/producto.routes'));
+
 module.exports = app;
