@@ -30,10 +30,12 @@ export const PostProduct = async (product) => {
   return data
 }
 
-export const UploadImage = async (productoImagen) => {
+export const UploadImage = async (imagen) => {
+  var dataImagen =new FormData()
+  dataImagen.append('productoImagen',imagen)
   const response = await fetch(`${API_URL}/producto/upload`, {
     method: 'POST',
-    body: productoImagen
+    body: dataImagen
   })
   const data = await response.json()
   return data
