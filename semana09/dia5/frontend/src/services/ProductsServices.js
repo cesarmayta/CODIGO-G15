@@ -22,11 +22,18 @@ export const PostProduct = async (product) => {
   const response = await fetch(`${API_URL}/producto`, {
     method: 'POST',
     headers: {
-      "Content-Type": "multipart/form-data",
-      "Accept": "application/json",
-      "type": "formData"
+      "Content-Type": "application/json"
     },
     body: JSON.stringify(product)
+  })
+  const data = await response.json()
+  return data
+}
+
+export const UploadImage = async (productoImagen) => {
+  const response = await fetch(`${API_URL}/producto/upload`, {
+    method: 'POST',
+    body: productoImagen
   })
   const data = await response.json()
   return data

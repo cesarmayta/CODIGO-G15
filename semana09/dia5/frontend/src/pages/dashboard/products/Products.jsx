@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { AdminContext } from "../../../contexts/AdminContext";
 import { GetCategories } from "../../../services/CategoriesServices";
-import { GetAllProducts, PostProduct } from "../../../services/ProductsServices";
+import { GetAllProducts, PostProduct,UploadImage } from "../../../services/ProductsServices";
 import './Products.scss';
 
 export const Products = () => {
@@ -51,6 +51,13 @@ export const Products = () => {
     const createProduct = async (event) => {
         event.preventDefault();
         try {
+            const responseUrl = await UploadImage(productoImagen);
+            console.log(responseUrl);
+            if(responseUrl.success){
+                setProduct({
+                    productoImagen: responseUrl.content
+                })
+            }
             const response = await PostProduct(product);
             if (response.success) {
                 setBandera(!bandera);

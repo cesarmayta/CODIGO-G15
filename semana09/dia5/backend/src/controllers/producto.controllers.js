@@ -42,7 +42,8 @@ productoController.create = async (req,res)=>{
     }
 }
 
-productoController.uploadImageAndCreate = async (req,res)=>{
+productoController.uploadImage = async (req,res)=>{
+    
     
     productoImagen = req.files.productoImagen
     console.log(productoImagen.name);
@@ -50,7 +51,7 @@ productoController.uploadImageAndCreate = async (req,res)=>{
     let uploadPath;
     uploadPath = '../backend/src/uploads/' + productoImagen.name;
 
-    productoImagen.mv(uploadPath,function(err){
+    await productoImagen.mv(uploadPath,function(err){
         if(err){
             res.status(502).json({
                 success: false,
@@ -59,14 +60,17 @@ productoController.uploadImageAndCreate = async (req,res)=>{
             })
         }
         else{
-            res.json({
-                success: true,
-                message: "producto e imagen registrado con exito",
-                content: productoImagen.name
-            })
+            cloudinary.uploader.upload(uploadPath,(error, result)=>{
+                console.log(result, error);
+                res.json({
+                    success: true,
+                    message: "producto e imagen registrado con exito",
+                    content: result.url
+                })
+            });
+            
         }
-    })
-    
+    }) 
 }
 
 module.exports = productoController;
