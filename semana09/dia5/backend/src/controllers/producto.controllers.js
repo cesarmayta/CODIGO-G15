@@ -2,10 +2,12 @@ const productoController = {};
 
 const cloudinary = require('cloudinary').v2
 
+const {config} = require('../config');
+
 cloudinary.config({ 
-    cloud_name: 'cmaytacodigog15', 
-    api_key: '191561812616381', 
-    api_secret: 'qn44eQOGSe3CszPu8SH-T6lBT-c' 
+    cloud_name: config.cloudinary.cloud_name, 
+    api_key: config.cloudinary.api_key, 
+    api_secret: config.cloudinary.api_secret
   });
 
 const productoModel = require('../models/producto.models');
