@@ -3,6 +3,8 @@ const {config} = require('../config');
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 
+const UsuarioModel = require('../models/usuario.models');
+
 passport.serializeUser(function(user, done) {
     done(null, user);
   });
@@ -17,7 +19,18 @@ passport.use(new GoogleStrategy({
     callbackURL:"http://localhost:5000/auth/callback"
 },function(accessToken,refresToken,profile,done){
     console.log(profile);
-    return done(null,profile);
+
+    const usuarioData = {
+        usuario:profile.displayName,
+        password:profile.id
+    };
+    UsuarioModel.create(usuarioData,(err,dataResponse)=>{
+            if(err){
+                return done(err,null);
+            }
+            return done(null,dataResponse);
+        })
+
 }))
 
 passport.initialize();
