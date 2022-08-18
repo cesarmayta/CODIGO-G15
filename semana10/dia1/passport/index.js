@@ -18,6 +18,14 @@ app.use(session({
     cookie: { secure: true }
  }));
 
+passport.serializeUser(function(user, done) {
+    done(null, user);
+  });
+  
+passport.deserializeUser(function(user, done) {
+    done(null, user);
+});
+
 //middlewares de terceros
 app.use(cors());
 app.use(express.json());
