@@ -6,7 +6,8 @@ from cloudinary.models import CloudinaryField
 # Create your models here.
 class Miembro(models.Model):
     miembro_id = models.AutoField(primary_key=True)
-    usuario_id = models.OneToOneField(User,to_field='id',on_delete=models.RESTRICT,verbose_name='Usuario')
+    usuario_id = models.OneToOneField(User,to_field='id',on_delete=models.RESTRICT,
+                                      db_column='usuario_id',verbose_name='Usuario')
     miembro_titulo = models.CharField(max_length=200,verbose_name='Titulo')
     miembro_biografia = models.TextField()
     miembro_twitter = models.CharField(max_length=100,verbose_name='Twitter')
@@ -39,7 +40,10 @@ class Curso(models.Model):
     curso_resumen = models.TextField()
     curso_precio = models.DecimalField(max_digits=10,decimal_places=2)
     curso_imagen = CloudinaryField('image',default='')
-    autor_id = models.ForeignKey(Miembro,to_field='miembro_id',on_delete=models.RESTRICT,verbose_name='Autor')
+    categoria_id = models.ForeignKey(Categoria,to_field='categoria_id',on_delete=models.RESTRICT,
+                                    db_column='categoria_id',verbose_name='Categoria')
+    autor_id = models.ForeignKey(Miembro,to_field='miembro_id',on_delete=models.RESTRICT,
+                                 db_column='autor_id',verbose_name='Autor')
 
     class Meta:
         db_table = 'tbl_curso'
