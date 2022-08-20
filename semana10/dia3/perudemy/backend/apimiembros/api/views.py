@@ -36,3 +36,9 @@ class CategoriaCursoView(APIView):
         }
 
         return Response(context)
+
+class UserCreateView(generics.CreateAPIView):
+    serializer_class = UserSerializer
+
+class MiembroCreateView(generics.CreateAPIView):
+    serializer_class = MiembroSerializer
