@@ -40,9 +40,11 @@ class Curso(models.Model):
     curso_resumen = models.TextField()
     curso_precio = models.DecimalField(max_digits=10,decimal_places=2)
     curso_imagen = CloudinaryField('image',default='')
-    categoria_id = models.ForeignKey(Categoria,to_field='categoria_id',on_delete=models.RESTRICT,
+    categoria_id = models.ForeignKey(Categoria,related_name='Cursos',
+                                    to_field='categoria_id',on_delete=models.RESTRICT,
                                     db_column='categoria_id',verbose_name='Categoria')
-    autor_id = models.ForeignKey(Miembro,to_field='miembro_id',on_delete=models.RESTRICT,
+    autor_id = models.ForeignKey(Miembro,
+                                to_field='miembro_id',on_delete=models.RESTRICT,
                                  db_column='autor_id',verbose_name='Autor')
 
     class Meta:
