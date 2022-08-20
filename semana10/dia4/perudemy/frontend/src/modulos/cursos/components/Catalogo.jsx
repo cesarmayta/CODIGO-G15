@@ -1,4 +1,5 @@
 import React from 'react';
+import CursoList from './CursoList';
 
 const Catalogo = () => {
     return (
@@ -7,10 +8,20 @@ const Catalogo = () => {
                 <div className="w-1/5 space-y-4 uk-visible@m">
                     <div>
                         <h4> Categories </h4>
-                        <select className="selectpicker default" data-selected-text-format="count" data-size="7"
+                        <select data-selected-text-format="count" data-size="7"
                             title="All Categories">
                             <option> Web Development </option>
                             <option> Mobile App </option>
+                            <option> Business </option>
+                            <option> IT Software </option>
+                            <option> Desings </option>
+                            <option> Marketing </option>
+                            <option> Life Style </option>
+                            <option> Photography </option>
+                            <option> Health Fitness </option>
+                            <option> Ecommerce </option>
+                            <option> Food cooking </option>
+                            <option> Teaching academy </option>
                         </select>
                     </div>
                     <div>
@@ -87,200 +98,7 @@ const Catalogo = () => {
                     </div>
 
                 </div>
-                <div className="lg:w-4/5">
-
-                    <div className="md:flex justify-between items-center mb-5">
-                        <div>
-                            <h2> Web Development Courses </h2>
-                            <p className=" uk-visible@m"> choose from +10.000 courses with new
-                                additions published every months </p>
-                        </div>
-                        <div className="flex">
-
-                            <div
-                                className="bg-white border border-gray-300 divide-gray-300 divide-x flex mr-3 rounded-md align-self-center">
-                                <a href="courses.html" className="px-4 py-2 text-lg text-gray-600"
-                                    data-tippy-placement="top" title="Course list">
-                                    <i className="icon-feather-grid"></i></a>
-                                <a href="courses-list.html" className="px-4 py-2 text-lg text-gray-400"
-                                    data-tippy-placement="top" title="Course Grid">
-                                    <i className="icon-feather-list"></i></a>
-                            </div>
-                            <div className="w-40">
-                                <select className="selectpicker ml-3" data-size="7">
-                                    <option value=""> Newest </option>
-                                    <option value="1">Popular</option>
-                                    <option value="2">Free</option>
-                                    <option value="3">Premium</option>
-                                </select>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div className="grid md:grid-cols-3 sm:grid-cols-2 gap-4">
-                        <a href="course-intro.html" className="course-card">
-                            
-                            <div className="course-card-thumbnail">
-                                <div className="course-card-thumbnail-inner">
-                                    <img src="assets/images/course/img-2.jpg" alt=""/>
-                                </div>
-                                <span className="play-btn-trigger"></span>
-                            </div>
-                            <div className="course-card-content">
-                                <h3>Learn Angular Fundamentals From beginning to advance</h3>
-                                <span className="instructor"> Stella Johnson </span>
-                                <ul className="course-info">
-                                    <li> 13 total hours </li>
-                                    <span className="middot">·</span>
-                                    <li> 151 lectures </li>
-                                </ul>
-                            </div>
-                            <div className="course-card-foot">
-                                <div className="star-rating leading-4">
-                                    <span className="star"></span> <span className="star"></span> <span className="star"></span>
-                                    <span className="star"></span>
-                                    <span className="star half"></span>
-                                </div>
-                                <span className="pricing">
-                                    $14.99
-                                </span>
-                            </div>
-                        </a>
-                        <a href="course-intro.html" className="course-card">
-                            <div className="course-card-thumbnail">
-                                <div className="course-card-thumbnail-inner">
-                                    <img src="assets/images/course/img-1.jpg" alt=""/>
-                                </div>
-                                <span className="play-btn-trigger"></span>
-                            </div>
-                            <div className="course-card-content">
-                                <h3>Bootstrap 4 From Scratch to Expert With 5 Real Projects</h3>
-                                <span className="instructor"> Stella Johnson </span>
-                                <ul className="course-info">
-                                    <li> 13 total hours </li>
-                                    <span className="middot">·</span>
-                                    <li> 151 lectures </li>
-                                </ul>
-                            </div>
-                            <div className="course-card-foot">
-                                <div className="star-rating leading-4">
-                                    <span className="star"></span> <span className="star"></span> <span className="star"></span>
-                                    <span className="star"></span>
-                                    <span className="star half"></span>
-                                </div>
-                                <span className="pricing">
-                                    $12.99
-                                </span>
-                            </div>
-                        </a>
-                        <a href="course-intro.html" className="course-card">
-                            <div className="course-card-thumbnail">
-                                <div className="course-card-thumbnail-inner">
-                                    <img src="assets/images/course/img-7.jpg" alt=""/>
-                                </div>
-                                <span className="play-btn-trigger"></span>
-                            </div>
-                            <div className="course-card-content">
-                                <h3>Learn Modern Web Designer And Developer Course</h3>
-                                <span className="instructor"> Stella Johnson </span>
-                                <ul className="course-info">
-                                    <li> 13 total hours </li>
-                                    <span className="middot">·</span>
-                                    <li> 151 lectures </li>
-                                </ul>
-                            </div>
-                            <div className="course-card-foot">
-                                <div className="star-rating leading-4">
-                                    <span className="star"></span> <span className="star"></span> <span className="star"></span>
-                                    <span className="star"></span>
-                                    <span className="star half"></span>
-                                </div>
-                                <span className="pricing">
-                                    $16.99
-                                </span>
-                            </div>
-                        </a>
-                        <a href="course-intro.html" className="course-card">
-                            <div className="course-card-thumbnail">
-                                <div className="course-card-thumbnail-inner">
-                                    <img src="assets/images/course/img-3.jpg" alt=""/>
-                                </div>
-                                <span className="play-btn-trigger"></span>
-                            </div>
-                            <div className="course-card-content">
-                                <h3>The Complete JavaScript From beginning to advance</h3>
-                                <span className="instructor"> Stella Johnson </span>
-                                <ul className="course-info">
-                                    <li> 13 total hours </li>
-                                    <span className="middot">·</span>
-                                    <li> 151 lectures </li>
-                                </ul>
-                            </div>
-                            <div className="course-card-foot">
-                                <div className="star-rating leading-4">
-                                    <span className="star"></span> <span className="star"></span> <span className="star"></span>
-                                    <span className="star"></span>
-                                    <span className="star half"></span>
-                                </div>
-                                <span className="pricing">
-                                    $12.99
-                                </span>
-                            </div>
-                        </a>
-                        <a href="course-intro.html" className="course-card">       
-                            <div className="course-card-thumbnail">
-                                <div className="course-card-thumbnail-inner">
-                                    <img src="assets/images/course/img-4.jpg" alt=""/>
-                                </div>
-                                <span className="play-btn-trigger"></span>
-                            </div>
-                            <div className="course-card-content">
-                                <h3> Become a Web Developer from Scratch to Advanced</h3>
-                                <span className="instructor"> Stella Johnson </span>
-                                <ul className="course-info">
-                                    <li> 13 total hours </li>
-                                    <span className="middot">·</span>
-                                    <li> 151 lectures </li>
-                                </ul>
-                            </div>
-                            <div className="course-card-foot">
-                                <div className="star-rating leading-4">
-                                    <span className="star"></span> <span className="star"></span> <span className="star"></span>
-                                    <span className="star"></span>
-                                    <span className="star half"></span>
-                                </div>
-                                <span className="pricing">
-                                    $11.99
-                                </span>
-                            </div>
-                        </a>
-                    </div>
-                    <ul className="uk-pagination uk-flex-center uk-margin-medium">
-                        <li className="uk-active">
-                            <span>1</span>
-                        </li>
-                        <li>
-                            <a href="#">2</a>
-                        </li>
-                        <li>
-                            <a href="#">3</a>
-                        </li>
-                        <li>
-                            <a href="#">4</a>
-                        </li>
-                        <li>
-                            <a href="#">5</a>
-                        </li>
-                        <li>
-                            <a href="#"><i className="icon-feather-chevron-right uk-margin-small-top"></i></a>
-                        </li>
-                        <li>
-                            <a href="#">12</a>
-                        </li>
-                    </ul>
-
-                </div>
+                <CursoList/>
             </div>
         </div>
     )
