@@ -1,0 +1,138 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API CURSOS",
+    "description": "api rest de cursos online",
+    "contact": {
+      "email": "cesarmayta@gmail.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://virtserver.swaggerhub.com/cesarmayta/apicursos/1.0.0",
+      "description": "api rest de cursos para perudemyu"
+    }
+  ],
+  "tags": [
+    {
+      "name": "curso",
+      "description": "acceso a cursos online"
+    }
+  ],
+  "paths": {
+    "/curso": {
+      "get": {
+        "tags": [
+          "curso"
+        ],
+        "summary": "retorna todos los cursos",
+        "description": "Permite retornar todos los cursos online disponibles\n",
+        "operationId": "curso",
+        "responses": {
+          "200": {
+            "description": "status:true",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Curso"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Sesion": {
+        "required": [
+          "duracion",
+          "nombre",
+          "video"
+        ],
+        "type": "object",
+        "properties": {
+          "nombre": {
+            "type": "string",
+            "example": "1 - Que es y porque usar Django"
+          },
+          "video": {
+            "type": "string",
+            "example": "https://www.youtube.com/watch?v=ENGO7hcyeSo"
+          },
+          "duracion": {
+            "type": "number",
+            "example": 20
+          }
+        }
+      },
+      "Modulo": {
+        "required": [
+          "nombre",
+          "sesiones"
+        ],
+        "type": "object",
+        "properties": {
+          "nombre": {
+            "type": "string",
+            "example": "Modulo 1 - Introducción a Django"
+          },
+          "sesiones": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Sesion"
+            }
+          }
+        }
+      },
+      "Curso": {
+        "required": [
+          "_id",
+          "descripcion",
+          "id",
+          "instructor",
+          "modulos",
+          "titulo",
+          "video"
+        ],
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "id": {
+            "type": "number",
+            "example": 1
+          },
+          "titulo": {
+            "type": "string",
+            "example": "Django desde cero"
+          },
+          "descripcion": {
+            "type": "string",
+            "example": "Curso completo de django desde cero"
+          },
+          "modulos": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Modulo"
+            }
+          }
+        }
+      }
+    }
+  }
+}
