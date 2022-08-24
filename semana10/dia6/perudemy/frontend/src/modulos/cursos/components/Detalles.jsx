@@ -1,15 +1,19 @@
-import { useState,useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import axios from 'axios';
+import { DataContext } from '../../../context/dataContext';
 
 export const Detalles = () => {
-    const [objCurso,setObjCurso] = useState({})
+    const [objCurso, setObjCurso] = useState({})
 
-    useEffect(()=>{
-        axios.get('http://localhost:5000/curso/6304217a8c7ee8a4c8badaff')
-        .then(res=>{
-            console.log(res.data.content)
-            setObjCurso(res.data.content)
-        })
+    const { cursoId } = useContext(DataContext)
+    console.log(cursoId)
+
+    useEffect(() => {
+        axios.get('http://localhost:5000/curso/'+ cursoId)
+            .then(res => {
+                console.log(res.data.content)
+                setObjCurso(res.data.content)
+            })
     })
 
     return (
@@ -96,35 +100,35 @@ export const Detalles = () => {
                         <h3 class="mb-4"> Sesiones </h3>
                         <ul uk-accordion>
                             <li class="bg-white px-6 py-4 rounded shadow hover:shadow-md uk-open">
-                                {objCurso.modulos.map((modulo)=>{
+                                {objCurso.modulos && objCurso.modulos.map((modulo) => {
                                     return (
                                         <>
                                             <a class="uk-accordion-title text-md" href="#"> {modulo.nombre} </a>
                                             <div class="uk-accordion-content mt-3 -mx-6">
                                                 <ul class="course-curriculum-list font-semibold">
-                                                {
-                                                    modulo.sesiones.map((sesion)=>{
-                                                        return (
-                                                            <>
-                                                                <li class="hover:bg-gray-200 px-6 py-2 flex">
-                                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
-                                                                        class="w-6 mr-2">
-                                                                        <path fill-rule="evenodd"
-                                                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
-                                                                            clip-rule="evenodd" />
-                                                                    </svg> {sesion.nombre} <span class="text-sm ml-auto"> {sesion.duracion} min </span>
-                                                                </li>
-                                                            </>
-                                                        )
-                                                    })
-                                                }  
+                                                    {
+                                                        modulo.sesiones.map((sesion) => {
+                                                            return (
+                                                                <>
+                                                                    <li class="hover:bg-gray-200 px-6 py-2 flex">
+                                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                                                            class="w-6 mr-2">
+                                                                            <path fill-rule="evenodd"
+                                                                                d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
+                                                                                clip-rule="evenodd" />
+                                                                        </svg> {sesion.nombre} <span class="text-sm ml-auto"> {sesion.duracion} min </span>
+                                                                    </li>
+                                                                </>
+                                                            )
+                                                        })
+                                                    }
                                                 </ul>
 
                                             </div>
                                         </>
                                     )
                                 })}
-                                
+
                             </li>
 
                         </ul>
