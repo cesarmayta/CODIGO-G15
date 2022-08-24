@@ -1,0 +1,22 @@
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { InicioSesion } from './modulos/autenticacion/pages/InicioSesion';
+import { Registro } from './modulos/autenticacion/pages/Registro';
+import { CursoIntro } from './modulos/cursos/pages/CursoIntro';
+import { Cursos } from './modulos/cursos/pages/Cursos';
+
+const App = () => {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Cursos />}>
+        </Route>
+        <Route path='/curso-intro' element={<CursoIntro />} />
+        <Route path='/iniciar-sesion' element={<InicioSesion />} />
+        <Route path='/registro' element={<Registro />} />
+      </Routes>
+    </Router>
+  )
+}
+
+export default App;
