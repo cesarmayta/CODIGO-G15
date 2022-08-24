@@ -1,17 +1,19 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 
 const NavBar = () => {
     return (
-            <header className="is-dark" uk-sticky="cls-active: is_fixed ; cls-inactive : is-dark">
-                <div className="header_inner">
-                    <div className="left-side">
-                        <div id="logo">
-                            <a href="#">
-                                <img src="assets/images/logo.png" alt=""/>
-                                <img src="assets/images/logo-light.png" className="logo_inverse" alt=""/>
-                                <img src="assets/images/logo-mobile.png" className="logo_mobile" alt=""/>
-                            </a>
-                        </div>
+        <header className="is-dark" uk-sticky="cls-active: is_fixed ; cls-inactive : is-dark">
+            <div className="header_inner">
+                <div className="left-side">
+                    <div id="logo">
+                        <a href="#">
+                            <img src="assets/images/logo.png" alt="" />
+                            <img src="assets/images/logo-light.png" className="logo_inverse" alt="" />
+                            <img src="assets/images/logo-mobile.png" className="logo_mobile" alt="" />
+                        </a>
+                    </div>
 
                     <div className="triger" uk-toggle="target: .header_menu ; cls: is-visible">
                         <i className="uil-bars"></i>
@@ -52,8 +54,11 @@ const NavBar = () => {
                                 </ul>
                             </div>
                         </li>
-                        <li><a href="books.html"> Book </a> </li>
-                        <li><a href="blog.html"> Blog</a> </li>
+                        {/* <li><a href="books.html"> Book</a> </li>
+                        <li><a href="blog.html"> Blog</a> </li> */}
+                        <li><Link to="/iniciar-sesion"> Login</Link></li>
+                        <li><Link to="/registro"> Register</Link></li>
+                        <li></li>
                         <li><a href="#"> Pages</a>
                             <div uk-drop="mode: click" className="xdropdown">
                                 <ul>
@@ -92,34 +97,34 @@ const NavBar = () => {
                     </a>
 
                     <a href="#">
-                        <img src="assets/images/avatars/avatar-2.jpg" className="header-avatar" alt=""/>
+                        <img src="assets/images/avatars/avatar-2.jpg" className="header-avatar" alt="" />
                     </a>
                     <div uk-drop="mode: click;offset:5" className="header_dropdown profile_dropdown">
                         <ul>
                             <li><a href="#">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                                    </svg>
-                                    My learning </a> </li>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                                </svg>
+                                My learning </a> </li>
                             <li><a href="#">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                                    </svg>
-                                    My Cart </a>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                                </svg>
+                                My Cart </a>
                             </li>
                             <li><a href="#">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                                    </svg>
-                                    My Wishlist </a> </li>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                                </svg>
+                                My Wishlist </a> </li>
                             <li>
-                                <hr/>
+                                <hr />
                             </li>
                             <li><a href="#"> Account setting </a> </li>
                             <li><a href="#"> Payments </a> </li>
@@ -137,8 +142,8 @@ const NavBar = () => {
                     </div>
 
                 </div>
-                </div>
-            </header>
+            </div>
+        </header>
     )
 }
 

@@ -1,9 +1,21 @@
 import React from 'react';
-import Cursos from './modulos/cursos/pages/Cursos';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { InicioSesion } from './modulos/autenticacion/pages/InicioSesion';
+import { Registro } from './modulos/autenticacion/pages/Registro';
+import { CursoIntro } from './modulos/cursos/pages/CursoIntro';
+import { Cursos } from './modulos/cursos/pages/Cursos';
 
-const App = () =>{
+const App = () => {
   return (
-    <Cursos/>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Cursos />}>
+        </Route>
+        <Route path='/curso-intro' element={<CursoIntro />} />
+        <Route path='/iniciar-sesion' element={<InicioSesion />} />
+        <Route path='/registro' element={<Registro />} />
+      </Routes>
+    </Router>
   )
 }
 
