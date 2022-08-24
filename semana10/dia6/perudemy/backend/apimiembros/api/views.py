@@ -56,3 +56,8 @@ class UserCreateView(generics.CreateAPIView):
 class MiembroCreateView(generics.CreateAPIView):
     serializer_class = MiembroSerializer
 
+from rest_framework_simplejwt.views import TokenObtainPairView
+
+
+class LoginView(TokenObtainPairView):
+    serializer_class = MyTokenObtainPairSerializer
