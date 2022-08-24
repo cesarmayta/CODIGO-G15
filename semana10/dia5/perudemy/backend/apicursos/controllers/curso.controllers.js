@@ -10,4 +10,13 @@ cursoController.getAll = async(req,res)=>{
     })
 }
 
+cursoController.getById = async(req,res)=>{
+    id = req.params.id;
+    const curso = await cursoModel.findById(id);
+    res.json({
+        status:true,
+        content:curso
+    })
+}
+
 module.exports = cursoController;

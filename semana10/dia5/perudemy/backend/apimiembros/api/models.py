@@ -46,6 +46,7 @@ class Curso(models.Model):
     autor_id = models.ForeignKey(Miembro,
                                 to_field='miembro_id',on_delete=models.RESTRICT,
                                  db_column='autor_id',verbose_name='Autor')
+    curso_refid = models.CharField(max_length=255,default='')
 
     class Meta:
         db_table = 'tbl_curso'
